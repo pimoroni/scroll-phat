@@ -1,4 +1,4 @@
-import math, time, scrollphat, sys, socket
+import math, time, scrollphat, sys, socket, psutil
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("gmail.com",80))
@@ -11,25 +11,34 @@ scrollphat.set_brightness(20)
 
 #scrollphat.write_string("This is a test, hurrah! The quick brown fox jumps over the lazy dog. y2 = (math.sin(((i/2.0)+(x*10.0))/10.0) + 1) * 2.5", 0)
 
+cpu_values = [0] * 11
+
 
 while True:	
-	scrollphat.clear()
-	scrollphat.write_string("IP: " + ip + "    ", 11)
-	for i in range(0, scrollphat.buffer_len() - 11):
-		scrollphat.scroll()
-		time.sleep(0.05)
+	cpu_values.pop(0)
+	cpu_values.append(psutil.cpu_percent())
 
-	scrollphat.clear()
-	scrollphat.write_string("Have a nice day! :-D    ", 11)
-	for i in range(0, scrollphat.buffer_len() - 11):
-		scrollphat.scroll()
-		time.sleep(0.05)
+	scrollphat.graph(cpu_values, 0, 25)
 
-	smileys = [":-D", ":-(", ":-O", "}:-(", ";-)", ":-S"]
-	for smiley in smileys:
-		scrollphat.clear()
-		scrollphat.write_string(smiley, 2)
-		time.sleep(0.5)
+	time.sleep(0.2)
+
+	# scrollphat.clear()
+	# scrollphat.write_string("IP: " + ip + "    ", 11)
+	# for i in range(0, scrollphat.buffer_len() - 11):
+	# 	scrollphat.scroll()
+	# 	time.sleep(0.05)
+
+	# scrollphat.clear()
+	# scrollphat.write_string("Have a nice day! :-D    ", 11)
+	# for i in range(0, scrollphat.buffer_len() - 11):
+	# 	scrollphat.scroll()
+	# 	time.sleep(0.05)
+
+	# smileys = [":-D", ":-(", ":-O", "}:-(", ";-)", ":-S"]
+	# for smiley in smileys:
+	# 	scrollphat.clear()
+	# 	scrollphat.write_string(smiley, 2)
+	# 	time.sleep(0.5)
 
 sys.exit()
 #scrollphat.update()

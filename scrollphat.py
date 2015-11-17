@@ -32,7 +32,10 @@ def update():
 
     window.append(0xff)
 
-    bus.write_i2c_block_data(I2C_ADDR, 0x01, window)
+    try:
+        bus.write_i2c_block_data(I2C_ADDR, 0x01, window)
+    except IOError:
+        print "IO error"
 
 # font image contains a grid of 3 x 32 characters each of which is
 # contained in a 6x6 box. The first character is ASCII 0x20 which
@@ -92,6 +95,42 @@ def write_string(chars, x = 0):
 
             set_col(x, 0)
             x += 1 # space between chars            
+
+    update()
+
+# draw a graph across the screen either using
+# the supplied min/max for scaling or auto
+# scaling the output to the min/max values
+# supplied
+def graph(values, low=None, high=None):
+    if low == None:
+        low = min(values)
+
+    if high == None:
+        high = max(values)
+
+    span = high - low
+
+    col = 0
+    for value in values:
+        value -= low
+        value /= span
+        value *= 5
+        value = int(value)
+
+        bits = 0
+        if value > 1:
+            bits |= 0b10000
+        if value > 2:
+            bits |= 0b11000
+        if value > 3:
+            bits |= 0b11100
+        if value > 4:
+            bits |= 0b11111
+        if value > 5:
+            bits |= 0b11111
+        set_col(col, bits)
+        col += 1
 
     update()
 
