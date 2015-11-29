@@ -1,0 +1,3 @@
+import scrollphat
+
+scrollphat.clear()
