@@ -5,7 +5,7 @@ s.connect(("gmail.com",80))
 ip = s.getsockname()[0]
 s.close()
 
-print ip
+print(ip)
 i = 0
 scrollphat.set_brightness(20)
 
@@ -56,12 +56,12 @@ while True:
 
 	time.sleep(0.005)
 
- 	i += 1
+	i += 1
 #     # buf = [0] * 11
 #     # t = millis()/50
 #     # for o_x in range(11):
 #     #     x = t + (o_x/3.0)
 #     #     y = int((math.sin(x) + 1) * 2.5)
 #     #     buf[o_x] |= (1 << y)
-    
-#     
+
+#

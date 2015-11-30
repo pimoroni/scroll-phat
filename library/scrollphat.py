@@ -35,7 +35,7 @@ def update():
     try:
         bus.write_i2c_block_data(I2C_ADDR, 0x01, window)
     except IOError:
-        print "IO error"
+        print("IO error")
 
 # font image contains a grid of 3 x 32 characters each of which is
 # contained in a 6x6 box. The first character is ASCII 0x20 which
