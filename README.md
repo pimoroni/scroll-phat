@@ -22,6 +22,14 @@ If you want to run the sine.py sample you will also need the psutil library:
 sudo apt-get install python-psutil
 ```
 
+## Installing
+
+You can install the scrollphat library from pip like so:
+
+```bash
+sudo pip install scrollphat
+```
+
 ## Resetting the Scroll pHAT
 
 run the turn_leds_off.py script to turn off all the LEDs
