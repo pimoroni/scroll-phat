@@ -3,3 +3,4 @@ include README.txt
 include CHANGELOG.txt
 include setup.py
 include scrollphat.py
+include font.png
