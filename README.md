@@ -1,5 +1,7 @@
 # >>>>>>>>>> Scroll pHAT >>>>>>>>>>
 
+*Note:* This library is still a little bit beta, we've been rushed off our feet and haven't had time to properly test and refine it and come up with examples. Sorry! It mostly works, though!
+
 11x5 pixels of message scrolling goodness!
 
 https://shop.pimoroni.com/collections/raspberry-pi-zero/products/scroll-phat
