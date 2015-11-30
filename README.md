@@ -14,12 +14,14 @@ Install the smbus module:
 
 ```bash
 sudo apt-get install python-smbus
+sudo apt-get install python3-smbus
 ```
 
 If you want to run the sine.py sample you will also need the psutil library:
 
 ```bash
 sudo apt-get install python-psutil
+sudo apt-get install python3-psutil
 ```
 
 ## Installing
@@ -28,6 +30,7 @@ You can install the scrollphat library from pip like so:
 
 ```bash
 sudo pip install scrollphat
+sudo pip3 install scrollphat
 ```
 
 ## Resetting the Scroll pHAT
@@ -37,4 +40,3 @@ run the turn_leds_off.py script to turn off all the LEDs
 ```bash
 python turn-leds-off.py
 ```
-
