@@ -1,5 +1,6 @@
 import smbus
 from PIL import Image
+import os
 
 I2C_ADDR = 0x60
 
@@ -35,13 +36,14 @@ def update():
     try:
         bus.write_i2c_block_data(I2C_ADDR, 0x01, window)
     except IOError:
-        print "IO error"
+        print("IO error")
 
 # font image contains a grid of 3 x 32 characters each of which is
 # contained in a 6x6 box. The first character is ASCII 0x20 which
 # increments down the column
 def load_font():
-    font_image = Image.open("font.png")
+    font_path = os.path.join(os.path.dirname(__file__), "font.png")
+    font_image = Image.open(font_path)
 
     char = 0x20
     for cx in range(0, 3):
