@@ -22,7 +22,7 @@ If you choose to download examples you'll find them in `/home/pi/Pimoroni/scroll
 
 ## Resetting the Scroll pHAT
 
-run the turn_leds_off.py script to turn off all the LEDs
+To turn off all the LEDs, run the turn_leds_off.py script, or in Python:
 
 ```python
 import scrollphat
