@@ -10,47 +10,26 @@ https://shop.pimoroni.com/collections/raspberry-pi-zero/products/scroll-phat
 
 Use raspi-config to activate i2c
 
-Install the smbus module
-
-install for Python 2:
+Install the smbus module:
 
 ```bash
 sudo apt-get install python-smbus
-```
-
-install for Python 3:
-
-```bash
 sudo apt-get install python3-smbus
 ```
 
-If you want to run the sine.py sample you will also need the psutil library
-
-install for Python 2:
+If you want to run the sine.py sample you will also need the psutil library:
 
 ```bash
 sudo apt-get install python-psutil
-```
-
-install for Python 3:
-
-```bash
 sudo apt-get install python3-psutil
 ```
 
 ## Installing
 
-You can install the scrollphat library from pip 
-
-install for Python 2:
+You can install the scrollphat library from pip like so:
 
 ```bash
 sudo pip install scrollphat
-```
-
-install for Python 3:
-
-```bash
 sudo pip3 install scrollphat
 ```
 
