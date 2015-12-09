@@ -21,12 +21,12 @@ def paint(pause):
             scrollphat.set_pixel(x,y,1)
             scrollphat.update()
             time.sleep(pause)
-    clear(pause)
 
 while(True):
     try:
         pause_time = 0.06
         paint(pause_time)
+        clear(pause_time)
     except KeyboardInterrupt:
-        clear(0)
+        scrollphat.clear()
         sys.exit(-1)
