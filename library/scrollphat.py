@@ -82,7 +82,7 @@ def set_col(x, value):
 
 def write_string(chars, x = 0):
     for char in chars:
-        if ord(char) == 0x20:
+        if ord(char) == 0x20 or ord(char) not in font:
             set_col(x, 0)
             x += 1
             set_col(x, 0)
@@ -90,7 +90,7 @@ def write_string(chars, x = 0):
             set_col(x, 0)
             x += 1
         else:
-            font_char = font[ord(char)]           
+            font_char = font[ord(char)]
             for i in range(0, len(font_char)):
                 set_col(x, font_char[i])
                 x += 1
@@ -166,3 +166,4 @@ def set_pixel(x,y,value):
 
 load_font()
 set_mode()    
+
