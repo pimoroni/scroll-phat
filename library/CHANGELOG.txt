@@ -2,3 +2,5 @@ Changelog
 ---------
 
 0.0.1 - Initial release
+0.0.2 - program and install bug fixes 
+0.0.3 - bug fixes
