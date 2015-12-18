@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import scrollphat
 import sys
 import time
