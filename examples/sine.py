@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import math, time, scrollphat, sys, socket, psutil
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
