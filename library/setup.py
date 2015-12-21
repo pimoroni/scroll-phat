@@ -38,7 +38,7 @@ classifiers = ['Development Status :: 5 - Production/Stable',
                'Topic :: System :: Hardware']
 
 setup(name		= 'scrollphat',
-	version		= '0.0.3',
+	version		= '0.0.4',
 	author		= 'Philip Howard',
 	author_email	= 'phil@pimoroni.com',
 	description	= 'Scroll pHAT Driver',
@@ -51,8 +51,5 @@ setup(name		= 'scrollphat',
 	packages	= [],
 	data_files	= [('.', ['font.png'])],
 	include_package_data = True,
-	install_requires= [
-		'pillow',
-		'smbus'
-	]
+	install_requires= []
 )
