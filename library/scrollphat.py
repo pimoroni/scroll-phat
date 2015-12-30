@@ -10,6 +10,8 @@ CMD_SET_MODE = 0x00
 CMD_SET_BRIGHTNESS = 0x19
 MODE_5X11 = 0b00000011
 
+INVERT = False
+
 # 1  0
 # 2  0
 # 4  0
@@ -30,6 +32,11 @@ def update():
     else:
         window = buffer[offset:]
         window += buffer[:11 - len(window)]
+
+    if INVERT:
+        window.reverse()
+        for i in range(len(window)):
+            window[i] = int(bin(window[i])[2:].zfill(5)[-5::][::-1],2)
 
     window.append(0xff)
 
@@ -52,7 +59,7 @@ def load_font():
 
             for x in range(0, 5):
                 bits = 0
-                for y in range(0, 5):                    
+                for y in range(0, 5):
                     if font_image.getpixel(((cx * 6) + x, (cy * 6) + y)) == 0:
                         bits |= (1 << y)
 
@@ -96,7 +103,7 @@ def write_string(chars, x = 0):
                 x += 1
 
             set_col(x, 0)
-            x += 1 # space between chars            
+            x += 1 # space between chars
 
     update()
 
@@ -165,5 +172,5 @@ def set_pixel(x,y,value):
         buffer[x] &= ~(1 << y)
 
 load_font()
-set_mode()    
+set_mode()
 
