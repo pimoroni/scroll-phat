@@ -24,6 +24,20 @@ font = {}
 buffer = [0] * 11
 offset = 0
 
+def invert(x):
+    r = 0
+    if x & 16:
+        r = r | 1
+    if x & 8:
+        r = r | 2
+    if x & 4:
+        r = r | 4
+    if x & 2:
+        r = r | 8
+    if x & 1:
+        r = r | 16
+    return r
+
 def update():
     global buffer, offset
 
@@ -36,7 +50,7 @@ def update():
     if INVERT:
         window.reverse()
         for i in range(len(window)):
-            window[i] = int(bin(window[i])[2:].zfill(5)[-5::][::-1],2)
+            window[i] = invert(window[i])
 
     window.append(0xff)
 
