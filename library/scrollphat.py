@@ -10,8 +10,6 @@ CMD_SET_MODE = 0x00
 CMD_SET_BRIGHTNESS = 0x19
 MODE_5X11 = 0b00000011
 
-INVERT = False
-
 # 1  0
 # 2  0
 # 4  0
@@ -23,8 +21,9 @@ font = {}
 
 buffer = [0] * 11
 offset = 0
+rotate = False
 
-def invert(x):
+def rotate5bits(x):
     r = 0
     if x & 16:
         r = r | 1
@@ -47,10 +46,10 @@ def update():
         window = buffer[offset:]
         window += buffer[:11 - len(window)]
 
-    if INVERT:
+    if rotate:
         window.reverse()
         for i in range(len(window)):
-            window[i] = invert(window[i])
+            window[i] = rotate5bits(window[i])
 
     window.append(0xff)
 
