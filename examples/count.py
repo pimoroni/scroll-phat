@@ -16,5 +16,9 @@ if(val > 999):
 scrollphat.set_brightness(7)
 
 for x in range(1, val+1):
-	scrollphat.write_string(str(x))
-	time.sleep(0.35)
+    try:
+        scrollphat.write_string(str(x))
+        time.sleep(0.35)
+    except KeyboardInterrupt:
+        scrollphat.clear()
+        sys.exit(-1)

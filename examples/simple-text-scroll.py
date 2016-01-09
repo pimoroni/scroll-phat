@@ -11,5 +11,9 @@ if len(sys.argv) != 2:
 scrollphat.write_string(sys.argv[1] + "   ")
 
 while True:
-    scrollphat.scroll()
-    time.sleep(0.1)
+    try:
+        scrollphat.scroll()
+        time.sleep(0.1)
+    except KeyboardInterrupt:
+        scrollphat.clear()
+        sys.exit(-1)
