@@ -21,6 +21,21 @@ font = {}
 
 buffer = [0] * 11
 offset = 0
+rotate = False
+
+def rotate5bits(x):
+    r = 0
+    if x & 16:
+        r = r | 1
+    if x & 8:
+        r = r | 2
+    if x & 4:
+        r = r | 4
+    if x & 2:
+        r = r | 8
+    if x & 1:
+        r = r | 16
+    return r
 
 def update():
     global buffer, offset
@@ -30,6 +45,11 @@ def update():
     else:
         window = buffer[offset:]
         window += buffer[:11 - len(window)]
+
+    if rotate:
+        window.reverse()
+        for i in range(len(window)):
+            window[i] = rotate5bits(window[i])
 
     window.append(0xff)
 
@@ -52,7 +72,7 @@ def load_font():
 
             for x in range(0, 5):
                 bits = 0
-                for y in range(0, 5):                    
+                for y in range(0, 5):
                     if font_image.getpixel(((cx * 6) + x, (cy * 6) + y)) == 0:
                         bits |= (1 << y)
 
@@ -96,7 +116,7 @@ def write_string(chars, x = 0):
                 x += 1
 
             set_col(x, 0)
-            x += 1 # space between chars            
+            x += 1 # space between chars
 
     update()
 
@@ -165,5 +185,5 @@ def set_pixel(x,y,value):
         buffer[x] &= ~(1 << y)
 
 load_font()
-set_mode()    
+set_mode()
 
