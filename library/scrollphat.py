@@ -115,9 +115,10 @@ def graph(values, low=None, high=None):
 
     col = 0
     for value in values:
-        value -= low
-        value /= span
-        value *= 5
+        value -= float(low)
+        value += 1
+        value /= float(span)
+        value *= 5.0
         value = int(value)
 
         bits = 0
