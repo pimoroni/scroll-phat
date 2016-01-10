@@ -29,15 +29,19 @@ msg = get_msg()
 scrollphat.write_string(msg)
 
 while True:
-    scrollphat.scroll()
-    time.sleep(pause)
+    try:
+        scrollphat.scroll()
+        time.sleep(pause)
 
-    if(count > timeout):
-        msg = get_msg()
-        scrollphat.write_string(msg)
-        timeout = get_timeout()
-        count = 0
-        print "Updating uptime message"
-    else:
-        count = count+ 1
+        if(count > timeout):
+            msg = get_msg()
+            scrollphat.write_string(msg)
+            timeout = get_timeout()
+            count = 0
+            print "Updating uptime message"
+        else:
+            count = count+ 1
+    except KeyboardInterrupt:
+        scrollphat.clear()
+        sys.exit(-1)
 

@@ -2,6 +2,7 @@
 
 import scrollphat
 import time
+import sys
 
 # simple binary clock
 # bcd for hours, minutes and seconds
@@ -22,14 +23,17 @@ def plot_digit(digit, position):
         scrollphat.set_pixel(position, y, int(bcd_digit[y]) == 1)
 
 while True:
-
-    current = time.strftime('%H0%M0%S')
-    for x in range(0, 8):
-        plot_digit(current[x], x)
-    for i in range(0, 5):
-        scrollphat.set_pixel(10, i, (5 - i) <= ((int(current[3:5])) / 10))
-    scrollphat.update()
-    time.sleep(0.5)
+    try:
+        current = time.strftime('%H0%M0%S')
+        for x in range(0, 8):
+            plot_digit(current[x], x)
+        for i in range(0, 5):
+            scrollphat.set_pixel(10, i, (5 - i) <= ((int(current[3:5])) / 10))
+        scrollphat.update()
+        time.sleep(0.5)
+    except KeyboardInterrupt:
+        scrollphat.clear()
+        sys.exit(-1)
 
 
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"

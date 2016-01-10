@@ -9,11 +9,8 @@ if len(sys.argv) != 2:
     sys.exit(0)
 
 scrollphat.write_string(sys.argv[1] + "   ")
+scrollphat.rotate = True
 
 while True:
-    try:
-        scrollphat.scroll()
-        time.sleep(0.1)
-    except KeyboardInterrupt:
-        scrollphat.clear()
-        sys.exit(-1)
+    scrollphat.scroll()
+    time.sleep(0.1)
