@@ -11,6 +11,7 @@ MODE_5X11 = 0b00000011
 
 buffer = [0] * 11
 offset = 0
+error_count = 0
 rotate = False
 
 def rotate5bits(x):
@@ -28,7 +29,7 @@ def rotate5bits(x):
     return r
 
 def update():
-    global buffer, offset
+    global buffer, offset, error_count
 
     if offset + 11 <= len(buffer):
         window = buffer[offset:offset + 11]
@@ -46,7 +47,9 @@ def update():
     try:
         bus.write_i2c_block_data(I2C_ADDR, 0x01, window)
     except IOError:
-        print("IO error")
+	error_count += 1
+        if error_count == 10:
+            print("A high number of IO Errors have occured, please check your soldering/connections.")
 
 def set_mode(mode=MODE_5X11):
     bus.write_i2c_block_data(I2C_ADDR, CMD_SET_MODE, [MODE_5X11])
@@ -134,11 +137,18 @@ def clear():
     buffer = [0] * 11
     update()
 
+def load_font(new_font):
+    global font
+    font = new_font
+
 def scroll_to(pos = 0):
     global offset
     offset = pos
     offset %= len(buffer)
     update()
+
+def io_errors():
+    return error_count
 
 def set_pixel(x,y,value):
     if value:
