@@ -38,7 +38,7 @@ classifiers = ['Development Status :: 5 - Production/Stable',
                'Topic :: System :: Hardware']
 
 setup(name		= 'scrollphat',
-	version		= '0.0.4',
+	version		= '0.0.5',
 	author		= 'Philip Howard',
 	author_email	= 'phil@pimoroni.com',
 	description	= 'Scroll pHAT Driver',
@@ -47,9 +47,8 @@ setup(name		= 'scrollphat',
 	keywords	= 'Raspberry Pi LED',
 	url		= 'http://www.pimoroni.com',
 	classifiers	= classifiers,
-	py_modules	= ['scrollphat'],
-	packages	= [],
-	data_files	= [('.', ['font.png'])],
+	py_modules	= [],
+	packages	= ['scrollphat'],
 	include_package_data = True,
 	install_requires= []
 )
