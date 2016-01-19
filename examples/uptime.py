@@ -38,7 +38,7 @@ while True:
             scrollphat.write_string(msg)
             timeout = get_timeout()
             count = 0
-            print "Updating uptime message"
+            print ("Updating uptime message")
         else:
             count = count+ 1
     except KeyboardInterrupt:
