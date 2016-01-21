@@ -5,3 +5,4 @@ Changelog
 0.0.2 - program and install bug fixes 
 0.0.3 - bug fixes
 0.0.4 - removed dependencies, satisfied by apt
+0.0.5 - precompiled font to list, suppressed IO error flood
