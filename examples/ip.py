@@ -3,17 +3,49 @@
 import time
 import scrollphat
 import socket
+import sys
+import netifaces
+import requests
+import json
 
-s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-s.connect(("gmail.com",80))
-ip = s.getsockname()[0]
-s.close()
+# requires: netifaces for looking up IP in readable way
+# requires: requests human readable HTTP requests
 
-print(ip)
+# Retrieve and print either the public IP or an internal IP address for an
+# adapter such as wlan0 by passing it as an argument to the program.
+# sudo python wlan0 => 192.168.0.x (useful for wifi hotspots)
+
+def get_internal_ip(interface):
+    ip = netifaces.ifaddresses(interface)[netifaces.AF_INET][0]['addr']
+    return ip
+
+def get_public_ip():
+    res = requests.get('http://ipinfo.io')
+    if(res.status_code == 200):
+        json_data = json.loads(res.text)
+
+        # this reponse also contains rich geo-location data
+        ip = json_data['ip']
+    else:
+        return "127.0.0.1"
+
+def get_ip(mode):
+    ip = "127.0.0.1"
+    if(mode == "public"):
+        ip = get_public_ip()
+    else:
+        ip = get_internal_ip(mode)
+    return ip
+    
+address_mode = "public"
+if(len(sys.argv) == 2):
+    address_mode = sys.argv[1]
+
+ip = get_ip(address_mode)
+
+print(address_mode + " IP Address: " +str(ip))
 
 scrollphat.set_brightness(20)
-
-cpu_values = [0] * 11
 
 while True:	
     scrollphat.clear()

@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+# Contributed by @alexellis 2015
+
 import math
 import time
 import scrollphat
