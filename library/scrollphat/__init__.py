@@ -47,7 +47,7 @@ def update():
     try:
         bus.write_i2c_block_data(I2C_ADDR, 0x01, window)
     except IOError:
-	error_count += 1
+        error_count += 1
         if error_count == 10:
             print("A high number of IO Errors have occured, please check your soldering/connections.")
 
