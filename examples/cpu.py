@@ -20,4 +20,4 @@ while True:
 		time.sleep(0.2)
 	except KeyboardInterrupt:
 		scrollphat.clear()
-        sys.exit(-1)
+		sys.exit(-1)
