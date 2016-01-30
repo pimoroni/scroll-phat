@@ -121,6 +121,9 @@ class IS31FL3730:
 
         self.update()
 
+    def set_buffer(self, replacement):
+        self.buffer = replacement
+
     def buffer_len(self):
         return len(self.buffer)
 

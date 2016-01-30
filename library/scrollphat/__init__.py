@@ -19,6 +19,10 @@ def update():
     controller.rotate = rotate
     controller.update()
 
+def set_buffer(buffer):
+    controller.rotate = rotate
+    controller.set_buffer(buffer)
+
 def set_mode(mode):
     controller.rotate = rotate
     controller.set_mode(mode)
