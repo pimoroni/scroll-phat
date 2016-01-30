@@ -14,27 +14,26 @@ import json
 # adapter such as wlan0 by passing it as an argument to the program.
 # sudo python wlan0 => 192.168.0.x (useful for wifi hotspots)
 
-def get_internal_ip(interface):
-    ip = [ip for ip in socket.gethostbyname_ex(socket.gethostname())[2] if not ip.startswith("127.")][:1]
+def get_internal_ip():
+    # As an alternative, look into netifaces package - pip install netifaces
+    # netifaces.ifaddresses(interface)[netifaces.AF_INET][0]['addr']
+
+    ip = [(s.connect(('8.8.8.8', 80)), s.getsockname()[0], s.close()) for s in [socket.socket(socket.AF_INET, socket.SOCK_DGRAM)]][0][1]
     return ip
 
 def get_public_ip():
+    ip = "127.0.0.1"
     res = requests.get('http://ipinfo.io')
     if(res.status_code == 200):
         json_data = json.loads(res.text)
 
         # this reponse also contains rich geo-location data
         ip = json_data['ip']
-    else:
-        return "127.0.0.1"
+    return ip
 
 def get_ip(mode):
-    ip = "127.0.0.1"
-    if(mode == "public"):
-        ip = get_public_ip()
-    else:
-        ip = get_internal_ip(mode)
-    return ip
+    return get_public_ip() if mode == "public" else get_internal_ip()
+#    return mode == "public" ? get_public_ip() : get_internal_ip()
     
 address_mode = "public"
 if(len(sys.argv) == 2):
@@ -44,11 +43,11 @@ ip = get_ip(address_mode)
 
 print(address_mode + " IP Address: " +str(ip))
 
-scrollphat.set_brightness(20)
+scrollphat.set_brightness(3)
 
 while True:	
     scrollphat.clear()
-    scrollphat.write_string("IP: " + ip + "    ", 11)
+    scrollphat.write_string("IP: " + str(ip) + "    ")
     for i in range(0, scrollphat.buffer_len() - 11):
         scrollphat.scroll()
         time.sleep(0.1)
