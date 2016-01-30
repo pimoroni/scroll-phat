@@ -17,7 +17,6 @@ class controller:
         self.error_count = 0
         self.rotate = False
         self.set_mode(self.MODE_5X11)
-#        self.brightness = 10
 
     def rotate5bits(self, x):
         r = 0
@@ -34,7 +33,6 @@ class controller:
         return r
 
     def update(self):
-
         if self.offset + 11 <= len(self.buffer):
             self.window = self.buffer[self.offset:self.offset + 11]
         else:
