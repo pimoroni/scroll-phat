@@ -4,7 +4,6 @@ import time
 import scrollphat
 import socket
 import sys
-import netifaces
 import requests
 import json
 
@@ -16,7 +15,7 @@ import json
 # sudo python wlan0 => 192.168.0.x (useful for wifi hotspots)
 
 def get_internal_ip(interface):
-    ip = netifaces.ifaddresses(interface)[netifaces.AF_INET][0]['addr']
+    ip = [ip for ip in socket.gethostbyname_ex(socket.gethostname())[2] if not ip.startswith("127.")][:1]
     return ip
 
 def get_public_ip():
