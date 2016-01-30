@@ -46,9 +46,12 @@ print(address_mode + " IP Address: " +str(ip))
 scrollphat.set_brightness(3)
 
 while True:	
-    scrollphat.clear()
-    scrollphat.write_string("IP: " + str(ip) + "    ")
-    for i in range(0, scrollphat.buffer_len() - 11):
-        scrollphat.scroll()
-        time.sleep(0.1)
-
+    try:
+        scrollphat.clear()
+        scrollphat.write_string("IP: " + str(ip) + "    ")
+        for i in range(0, scrollphat.buffer_len() - 11):
+            scrollphat.scroll()
+            time.sleep(0.1)
+    except KeyboardInterrupt:
+        scrollphat.clear()
+        sys.exit(-1)

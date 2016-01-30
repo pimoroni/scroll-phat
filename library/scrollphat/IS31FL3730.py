@@ -1,6 +1,6 @@
 MODE_5X11 = 0b00000011
 
-class controller:
+class IS31FL3730:
     def __init__(self, smbus, font):
         self.smbus = smbus
         self.font = font
