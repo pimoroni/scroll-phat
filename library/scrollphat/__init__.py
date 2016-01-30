@@ -2,69 +2,69 @@ import smbus
 from .font import font
 from .IS31FL3730 import IS31FL3730
 
-IS31FL3730_1 = IS31FL3730(smbus, font)
-IS31FL3730_1.initialize()
+controller = IS31FL3730(smbus, font)
+controller.initialize()
 rotate = False
 
 def initialize():
-    IS31FL3730_1.initialize()
+    controller.initialize()
 
 # The public interface maintains compatibility with previous singleton
 # pattern.
 def rotate5bits(x):
-    IS31FL3730_1.rotate = rotate # Needed on every method for existing interface
-    IS31FL3730_1.rotate5bits(x)
+    controller.rotate = rotate # Needed on every method for existing interface
+    controller.rotate5bits(x)
 
 def update():
-    IS31FL3730_1.rotate = rotate
-    IS31FL3730_1.update()
+    controller.rotate = rotate
+    controller.update()
 
 def set_mode(mode):
-    IS31FL3730_1.rotate = rotate
-    IS31FL3730_1.set_mode(mode)
+    controller.rotate = rotate
+    controller.set_mode(mode)
 
 def set_brightness(brightness):
-    IS31FL3730_1.rotate = rotate
-    IS31FL3730_1.set_brightness(brightness)
+    controller.rotate = rotate
+    controller.set_brightness(brightness)
 
 def set_col(x, value):
-    IS31FL3730_1.rotate = rotate
-    IS31FL3730_1.set_col(x, value)
+    controller.rotate = rotate
+    controller.set_col(x, value)
 
 def write_string( chars, x = 0):
-    IS31FL3730_1.rotate = rotate
-    IS31FL3730_1.write_string(chars,x)
+    controller.rotate = rotate
+    controller.write_string(chars,x)
 
 def graph(values, low=None, high=None):
-    IS31FL3730_1.rotate = rotate
-    IS31FL3730_1.graph(values, low, high)
+    controller.rotate = rotate
+    controller.graph(values, low, high)
 
 # This is breaking encapsulation - could it be dropped?
 def buffer_len():
-    IS31FL3730_1.rotate = rotate
-    return IS31FL3730_1.buffer_len()
+    controller.rotate = rotate
+    return controller.buffer_len()
 
 def scroll(delta = 1):
-    IS31FL3730_1.rotate = rotate
-    IS31FL3730_1.scroll(delta)
+    controller.rotate = rotate
+    controller.scroll(delta)
 
 def clear():
-    IS31FL3730_1.rotate = rotate
-    IS31FL3730_1.clear()
+    controller.rotate = rotate
+    controller.clear()
 
 def load_font(new_font):
-    IS31FL3730_1.rotate = rotate
-    IS31FL3730_1.load_font(new_font)
+    controller.rotate = rotate
+    controller.load_font(new_font)
 
 def scroll_to(pos = 0):
-    IS31FL3730_1.rotate = rotate
-    IS31FL3730_1.scroll_to(pos)
+    controller.rotate = rotate
+    controller.scroll_to(pos)
 
 def io_errors():
-    IS31FL3730_1.rotate = rotate
-    return IS31FL3730_1.io_errors()
+    controller.rotate = rotate
+    return controller.io_errors()
 
 def set_pixel(x,y,value):
-    IS31FL3730_1.rotate = rotate
-    IS31FL3730_1.set_pixel(x,y,value)
+    controller.rotate = rotate
+    controller.set_pixel(x,y,value)
 
