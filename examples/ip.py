@@ -1,5 +1,13 @@
 #!/usr/bin/env python
 
+# Usage:
+# "sudo python ip.py"
+# Prints out your public IP address
+#
+# "sudo python ip.py internal"
+# Prints out your internal, i.e. wi-fi or DHCP IP address
+#
+
 import time
 import scrollphat
 import socket
@@ -27,7 +35,7 @@ def get_public_ip():
     if(res.status_code == 200):
         json_data = json.loads(res.text)
 
-        # this reponse also contains rich geo-location data
+        # this response also contains rich geo-location data
         ip = json_data['ip']
     return ip
 
