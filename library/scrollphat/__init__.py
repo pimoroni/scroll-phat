@@ -1,159 +1,74 @@
 import smbus
 from .font import font
+from .IS31FL3730 import IS31FL3730
 
-I2C_ADDR = 0x60
-
-bus = smbus.SMBus(1)
-
-CMD_SET_MODE = 0x00
-CMD_SET_BRIGHTNESS = 0x19
-MODE_5X11 = 0b00000011
-
-buffer = [0] * 11
-offset = 0
-error_count = 0
+controller = IS31FL3730(smbus, font)
+controller.initialize()
 rotate = False
 
+def initialize():
+    controller.initialize()
+
+# The public interface maintains compatibility with previous singleton
+# pattern.
 def rotate5bits(x):
-    r = 0
-    if x & 16:
-        r = r | 1
-    if x & 8:
-        r = r | 2
-    if x & 4:
-        r = r | 4
-    if x & 2:
-        r = r | 8
-    if x & 1:
-        r = r | 16
-    return r
+    controller.rotate = rotate # Needed on every method for existing interface
+    controller.rotate5bits(x)
 
 def update():
-    global buffer, offset, error_count
+    controller.rotate = rotate
+    controller.update()
 
-    if offset + 11 <= len(buffer):
-        window = buffer[offset:offset + 11]
-    else:
-        window = buffer[offset:]
-        window += buffer[:11 - len(window)]
+def set_buffer(buffer):
+    controller.rotate = rotate
+    controller.set_buffer(buffer)
 
-    if rotate:
-        window.reverse()
-        for i in range(len(window)):
-            window[i] = rotate5bits(window[i])
-
-    window.append(0xff)
-
-    try:
-        bus.write_i2c_block_data(I2C_ADDR, 0x01, window)
-    except IOError:
-        error_count += 1
-        if error_count == 10:
-            print("A high number of IO Errors have occured, please check your soldering/connections.")
-
-def set_mode(mode=MODE_5X11):
-    bus.write_i2c_block_data(I2C_ADDR, CMD_SET_MODE, [MODE_5X11])
+def set_mode(mode):
+    controller.rotate = rotate
+    controller.set_mode(mode)
 
 def set_brightness(brightness):
-    bus.write_i2c_block_data(I2C_ADDR, CMD_SET_BRIGHTNESS, [brightness])
+    controller.rotate = rotate
+    controller.set_brightness(brightness)
 
 def set_col(x, value):
-    global buffer
+    controller.rotate = rotate
+    controller.set_col(x, value)
 
-    if len(buffer) <= x:
-        buffer += [0] * (x - len(buffer) + 1)
+def write_string( chars, x = 0):
+    controller.rotate = rotate
+    controller.write_string(chars,x)
 
-    buffer[x] = value
-
-def write_string(chars, x = 0):
-    for char in chars:
-        if ord(char) == 0x20 or ord(char) not in font:
-            set_col(x, 0)
-            x += 1
-            set_col(x, 0)
-            x += 1
-            set_col(x, 0)
-            x += 1
-        else:
-            font_char = font[ord(char)]
-            for i in range(0, len(font_char)):
-                set_col(x, font_char[i])
-                x += 1
-
-            set_col(x, 0)
-            x += 1 # space between chars
-
-    update()
-
-# draw a graph across the screen either using
-# the supplied min/max for scaling or auto
-# scaling the output to the min/max values
-# supplied
 def graph(values, low=None, high=None):
-    if low == None:
-        low = min(values)
+    controller.rotate = rotate
+    controller.graph(values, low, high)
 
-    if high == None:
-        high = max(values)
-
-    span = high - low
-
-    col = 0
-    for value in values:
-        value -= low
-        value /= span
-        value *= 5
-        value = int(value)
-
-        bits = 0
-        if value > 1:
-            bits |= 0b10000
-        if value > 2:
-            bits |= 0b11000
-        if value > 3:
-            bits |= 0b11100
-        if value > 4:
-            bits |= 0b11111
-        if value > 5:
-            bits |= 0b11111
-        set_col(col, bits)
-        col += 1
-
-    update()
-
+# This is breaking encapsulation - could it be dropped?
 def buffer_len():
-    global buffer
-    return len(buffer)
+    controller.rotate = rotate
+    return controller.buffer_len()
 
 def scroll(delta = 1):
-    global offset
-    offset += delta
-    offset %= len(buffer)
-    update()
+    controller.rotate = rotate
+    controller.scroll(delta)
 
 def clear():
-    global buffer, offset
-    offset = 0
-    buffer = [0] * 11
-    update()
+    controller.rotate = rotate
+    controller.clear()
 
 def load_font(new_font):
-    global font
-    font = new_font
+    controller.rotate = rotate
+    controller.load_font(new_font)
 
 def scroll_to(pos = 0):
-    global offset
-    offset = pos
-    offset %= len(buffer)
-    update()
+    controller.rotate = rotate
+    controller.scroll_to(pos)
 
 def io_errors():
-    return error_count
+    controller.rotate = rotate
+    return controller.io_errors()
 
 def set_pixel(x,y,value):
-    if value:
-        buffer[x] |= (1 << y)
-    else:
-        buffer[x] &= ~(1 << y)
+    controller.rotate = rotate
+    controller.set_pixel(x,y,value)
 
-set_mode()

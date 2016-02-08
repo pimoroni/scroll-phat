@@ -16,7 +16,7 @@ while True:
             y *= 2.5 # Scale to 0 to 5
             buf[x] = 1 << int(y)
 
-        scrollphat.buffer = buf
+        scrollphat.set_buffer(buf)
         scrollphat.update()
 
         time.sleep(0.005)
