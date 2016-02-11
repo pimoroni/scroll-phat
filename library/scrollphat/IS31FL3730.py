@@ -51,7 +51,7 @@ class IS31FL3730:
         except IOError:
             self.error_count += 1
             if self.error_count == 10:
-                print("A high number of IO Errors have occured, please check your soldering/connections.")
+                print("A high number of IO Errors have occurred, please check your soldering/connections.")
 
     def set_mode(self, mode=MODE_5X11):
         self.bus.write_i2c_block_data(self.I2C_ADDR, self.CMD_SET_MODE, [self.MODE_5X11])
