@@ -59,6 +59,11 @@ class IS31FL3730:
     def set_mode(self, mode=MODE_5X11):
         self.bus.write_i2c_block_data(self.i2cConstants.I2C_ADDR, self.i2cConstants.CMD_SET_MODE, [self.i2cConstants.MODE_5X11])
 
+    def get_brightness(self):
+        if hasattr(self, 'brightness'):
+            return self.brightness
+        return -1
+
     def set_brightness(self, brightness):
         self.brightness = brightness
         self.bus.write_i2c_block_data(self.i2cConstants.I2C_ADDR, self.i2cConstants.CMD_SET_BRIGHTNESS, [self.brightness])

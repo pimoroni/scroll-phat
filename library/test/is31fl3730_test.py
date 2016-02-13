@@ -17,13 +17,21 @@ class FakeI2c:
 
 class DeviceTest(unittest.TestCase):
 
-    def test_set_brightness(self):
+    def test_set_brightness_after_setting_it(self):
         font= {}
         fakeI2c = FakeI2c()
         sut = IS31FL3730(fakeI2c, font)
         constants = I2cConstants()
         sut.set_brightness(5)
         self.assertEquals(fakeI2c.write_i2c_block_data_calls[0]["size"], [5])
+        self.assertEquals(sut.get_brightness(), 5)
+
+    def test_set_brightness_when_it_was_never_set(self):
+        font= {}
+        fakeI2c = FakeI2c()
+        sut = IS31FL3730(fakeI2c, font)
+        constants = I2cConstants()
+        self.assertEquals(sut.get_brightness(), -1)
 
     def test_rotate5bits_inrange(self):
         font= {}
