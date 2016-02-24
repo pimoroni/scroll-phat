@@ -1,69 +1,27 @@
 #!/usr/bin/env python
 
-import math, time, scrollphat, sys, socket, psutil
+import scrollphat
+import math
+import time
+import sys
 
-s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-s.connect(("gmail.com",80))
-ip = s.getsockname()[0]
-s.close()
-
-print(ip)
 i = 0
+buf = [0] * 11
 scrollphat.set_brightness(20)
 
-#scrollphat.write_string("This is a test, hurrah! The quick brown fox jumps over the lazy dog. y2 = (math.sin(((i/2.0)+(x*10.0))/10.0) + 1) * 2.5", 0)
-
-cpu_values = [0] * 11
-
-
-while True:	
-	cpu_values.pop(0)
-	cpu_values.append(psutil.cpu_percent())
-
-	scrollphat.graph(cpu_values, 0, 25)
-
-	time.sleep(0.2)
-
-	# scrollphat.clear()
-	# scrollphat.write_string("IP: " + ip + "    ", 11)
-	# for i in range(0, scrollphat.buffer_len() - 11):
-	# 	scrollphat.scroll()
-	# 	time.sleep(0.05)
-
-	# scrollphat.clear()
-	# scrollphat.write_string("Have a nice day! :-D    ", 11)
-	# for i in range(0, scrollphat.buffer_len() - 11):
-	# 	scrollphat.scroll()
-	# 	time.sleep(0.05)
-
-	# smileys = [":-D", ":-(", ":-O", "}:-(", ";-)", ":-S"]
-	# for smiley in smileys:
-	# 	scrollphat.clear()
-	# 	scrollphat.write_string(smiley, 2)
-	# 	time.sleep(0.5)
-
-sys.exit()
-#scrollphat.update()
-buf = [0] * 11
 while True:
-	for x in range(0, 11):
-		y = (math.sin(((i)+(x*10.0))/10.0) + 1) * 2.5
-		y = int(y)
-		y2 = (math.sin(((i/2.0)+(x*10.0))/10.0) + 1) * 2.5
-		y2 = int(y2)
-		buf[x] = 1 << y
-		#buf[x] |= 1 << y2
+    try:
+        for x in range(0, 11):
+            y = (math.sin((i + (x * 10)) / 10.0) + 1) # Produces range from 0 to 2
+            y *= 2.5 # Scale to 0 to 5
+            buf[x] = 1 << int(y)
 
-	scrollphat.update(buf)
+        scrollphat.set_buffer(buf)
+        scrollphat.update()
 
-	time.sleep(0.005)
+        time.sleep(0.005)
 
-	i += 1
-#     # buf = [0] * 11
-#     # t = millis()/50
-#     # for o_x in range(11):
-#     #     x = t + (o_x/3.0)
-#     #     y = int((math.sin(x) + 1) * 2.5)
-#     #     buf[o_x] |= (1 << y)
-
-#
+        i += 1
+    except KeyboardInterrupt:
+        scrollphat.clear()
+        sys.exit(-1)

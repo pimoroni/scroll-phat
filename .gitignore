@@ -15,3 +15,5 @@ MANIFEST
 .idea
 pip-log.txt
 pip-delete-this-directory.txt
+library/test/scrollphat/
+
