@@ -16,9 +16,9 @@ refresh_interval = 60*30
 if len(sys.argv)==2:
     postcode = sys.argv[1]
 else:
-    print "Usage: ./bbcweather.py area"
-    print "eg ./bbcweather.py SW19"
-    print "Defaulting to Sheffield-on-Sea"
+    print("Usage: ./bbcweather.py area")
+    print("eg ./bbcweather.py SW19")
+    print("Defaulting to Sheffield-on-Sea")
     postcode = "S2" # Sheffield-on-Sea
 
 url = "http://open.live.bbc.co.uk/weather/feeds/en/" + postcode + "/3dayforecast.rss"
@@ -28,7 +28,7 @@ def get_timeout():
 
 def get_wet():
 # Get the weather data
-    print "Updating weather for", postcode
+    print("Updating weather for", postcode)
     d = feedparser.parse(url)
     entries = int(len(d['entries']))
     val = "        " + d['entries'][0]['title']
@@ -38,7 +38,7 @@ def get_wet():
     val = val.replace("Maximum", "Max")
     val = val.replace("Minimum", "Min")
     val = val.replace("Temperature: ", "")
-    val = val.replace(u"\u00B0","")
+    val = val.replace("\u00B0","")
     val = val.replace(",", "")
     val = val.replace("(", "")
     val = val.replace(")", "")
