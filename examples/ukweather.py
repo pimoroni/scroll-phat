@@ -39,7 +39,7 @@ def get_wet():
     val = val.replace("Maximum", "Max")
     val = val.replace("Minimum", "Min")
     val = val.replace("Temperature: ", "")
-    val = val.replace("\u00B0","")
+    val = val.replace(u"\u00B0","")
     val = val.replace(",", "")
     val = val.replace("(", "")
     val = val.replace(")", "")
