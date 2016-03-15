@@ -17,7 +17,7 @@ def get_timeout():
     return ticks_per_second * refresh_interval
 
 def get_msg():
-    val = subprocess.check_output(["uptime", "-p"])
+    val = subprocess.check_output(["uptime", "-p"]).decode("utf-8")
     val = val.replace("\n","")
     val = val.replace("minutes","mins")
     val = val + "    "
