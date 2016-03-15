@@ -1,6 +1,6 @@
 import smbus
 from .font import font
-from .IS31FL3730 import IS31FL3730
+from .IS31FL3730 import IS31FL3730, I2cConstants
 
 controller = IS31FL3730(smbus, font)
 controller.initialize()
@@ -71,4 +71,3 @@ def io_errors():
 def set_pixel(x,y,value):
     controller.rotate = rotate
     controller.set_pixel(x,y,value)
-
