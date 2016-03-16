@@ -37,6 +37,11 @@ try:
                 for y in range(5):
                     scrollphat.set_pixel(x,y,1)
             scrollphat.update()
+            while 1: #DISPLAY FLASH
+                scrollphat.set_brightness(0)
+                time.sleep(1)
+                scrollphat.set_brightness(10)
+                time.sleep(1)
         else:
             print("Cannot display: Out of range.")
             scrollphat.clear()
