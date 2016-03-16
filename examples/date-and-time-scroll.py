@@ -1,39 +1,43 @@
-##!/usr/bin/env python
-import scrollphat
+#!/usr/bin/env python
+# Script to display date and time, i.e.:
+# " Monday 1st January 2016    00:00:00    "
+# Paul Rowland, 16/03/2016
+# v1.2
 import sys
 import time
+import scrollphat
 
 while True:
+    try:
+        dNumLng = time.strftime("%d")  # Long day with any leading zero
+        dNum = dNumLng.lstrip("0")     # Strip any leading zeroes if any
 
-	try:
-		dayNumber = time.strftime("%d")
-	
-		if dayNumber == ("01","21","31"):
-			suffix = "st"
-		if dayNumber == ("02","22"):
-			suffix = "nd"
-		if dayNumber == ("03","23"):
-			suffix = "rd"
-		else:
-			suffix = "th"
-	
-		dayName = time.strftime("%A")
-		dayNumberShort = dayNumber.lstrip("0")
-		month = time.strftime("%B")
-		year = time.strftime("%Y")
-		hour = time.strftime("%H")
-		minutes = time.strftime("%M")
-		seconds = time.strftime("%S")
-	
-		assembledDateString = dayName + " " + dayNumberShort + suffix + " " + month + " " + year + "    " + hour + ":" + minutes + ":" + seconds + "    "
+        def get_day_sufx(dNum):        # Work out "st", "nd", "rd" or "th"
+            if dNum == ("1","21","31"):
+                return "st"
+            if dNum == ("2","22"):
+                return "nd"
+            if dNum == ("3","23"):
+                return "rd"
+            else:
+                return "th"
 
-		scrollphat.rotate = True
-		scrollphat.set_brightness(10)
-	
-		scrollphat.write_string(assembledDateString)
-		scrollphat.scroll()
-		time.sleep(0.1)
-	
-	except KeyboardInterrupt:
-		scrollphat.clear()
-		sys.exit(-1)
+        sufx = get_day_sufx(dNum)   # Run above, supply date, create suffix
+        dNam = time.strftime("%A")  # Day name
+        mnth = time.strftime("%B")  # Month name (full)
+        year = time.strftime("%Y")  # Year (4 digits)
+        hour = time.strftime("%H")  # Hours (24 hours)
+        mins = time.strftime("%M")  # Minutes
+        secs = time.strftime("%S")  # Seconds
+
+        # Assemble all the variables into a single string
+        assembled = " " + dNam + " " + dNum + sufx + " " + mnth + " " + year + "    " + hour + ":" + mins + ":" + secs + "    "
+
+        scrollphat.set_brightness(10)      # Readable brightness?
+        scrollphat.write_string(assembled) # Create the string for the pHAT
+        scrollphat.scroll()                # Scroll the string
+        time.sleep(0.1)                    # Control the speed
+
+    except KeyboardInterrupt: # End if "Ctrl+C" is pressed
+        scrollphat.clear()
+        sys.exit(-1)
