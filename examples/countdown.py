@@ -3,7 +3,7 @@ import time
 import scrollphat
 
 try:
-    print("Please enter the target time with intergers")
+    print("Please enter the target time with integers")
     year = input("Year:\t")
     month = input("Month:\t")
     d = input("Date:\t")
