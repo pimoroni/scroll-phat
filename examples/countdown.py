@@ -20,12 +20,12 @@ try:
         if deltaMin > 99 and deltaHour < 99:
             dis = str(deltaHour) + "h"
             scrollphat.write_string(dis)
-            time.sleep(450)
+            time.sleep(60)
             scrollphat.clear()
         elif deltaSec > 999 and deltaMin <= 99:
             dis = str(deltaMin) + "\""
             scrollphat.write_string(dis)
-            time.sleep(15)
+            time.sleep(2.5)
             scrollphat.clear()
         elif 0 <= deltaSec <= 999:
             dis = str(deltaSec)
