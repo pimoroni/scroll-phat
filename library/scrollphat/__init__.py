@@ -52,6 +52,10 @@ def scroll(delta = 1):
     controller.rotate = rotate
     controller.scroll(delta)
 
+def clear_buffer():
+    controller.rotate = rotate
+    controller.clear_buffer()
+
 def clear():
     controller.rotate = rotate
     controller.clear()
