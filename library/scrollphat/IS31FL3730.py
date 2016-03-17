@@ -14,7 +14,7 @@ class IS31FL3730:
         self.i2cConstants = I2cConstants()
 
     def initialize(self):
-        self.bus = self.smbus.SMBus(1)
+        self.bus = self.bus.SMBus(1)
         self.buffer = [0] * 11
         self.offset = 0
         self.error_count = 0
