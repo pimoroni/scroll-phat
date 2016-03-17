@@ -8,7 +8,7 @@ scrollphat.clear()    # Clear pHAT display ensuring nothing is displayed prior t
 
 while True:
     try:
-        dNumLng = time.strftime("%d")  # Long day with any leading zeroed
+        dNumLng = time.strftime("%d")  # Long day with any leading zeroes
         dNum = dNumLng.lstrip("0")     # Strip leading zeroes, if any
 
         def get_day_sufx(dNum):        # Work out "st", "nd", "rd" or "th"
