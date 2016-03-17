@@ -23,7 +23,7 @@ try:
             time.sleep(60)
             scrollphat.clear()
         elif deltaSec > 999 and deltaMin <= 99:
-            dis = str(deltaMin) + "\""
+            dis = str(deltaMin) + "\'"
             scrollphat.write_string(dis)
             time.sleep(2.5)
             scrollphat.clear()
