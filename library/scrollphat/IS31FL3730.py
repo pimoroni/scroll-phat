@@ -12,14 +12,16 @@ class IS31FL3730:
         self.bus = smbus
         self.font = font
         self.i2cConstants = I2cConstants()
+        self._rotate = False
 
-    def initialize(self):
         self.bus = self.bus.SMBus(1)
         self.buffer = [0] * 11
         self.offset = 0
         self.error_count = 0
-        self.rotate = False
         self.set_mode(self.i2cConstants.MODE_5X11)
+
+    def set_rotate(self, value):
+        self._rotate = value
 
     def rotate5bits(self, x):
         r = 0
@@ -42,7 +44,7 @@ class IS31FL3730:
             self.window = self.buffer[self.offset:]
             self.window += self.buffer[:11 - len(self.window)]
 
-        if self.rotate:
+        if self._rotate:
             self.window.reverse()
             for i in range(len(self.window)):
                 self.window[i] = self.rotate5bits(self.window[i])
@@ -152,7 +154,6 @@ class IS31FL3730:
         self.font = new_font
 
     def scroll_to(self, pos = 0):
-
         self.offset = pos
         self.offset %= len(self.buffer)
         self.update()
