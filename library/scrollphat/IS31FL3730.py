@@ -140,9 +140,12 @@ class IS31FL3730:
         self.offset %= len(self.buffer)
         self.update()
 
-    def clear(self):
+    def clear_buffer(self):
         self.offset = 0
         self.buffer = [0] * 11
+
+    def clear(self):
+        self.clear_buffer()
         self.update()
 
     def load_font(self, new_font):
