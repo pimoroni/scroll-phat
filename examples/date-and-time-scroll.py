@@ -1,16 +1,15 @@
 #!/usr/bin/env python
 # Script to display date and time, i.e.:
-# " Monday 1st January 2016    00:00:00    "
-# Paul Rowland, 16/03/2016
-# v1.2
 import sys
 import time
 import scrollphat
 
+scrollphat.clear()    # Clear pHAT display ensuring nothing is displayed prior to starting
+
 while True:
     try:
-        dNumLng = time.strftime("%d")  # Long day with any leading zero
-        dNum = dNumLng.lstrip("0")     # Strip any leading zeroes if any
+        dNumLng = time.strftime("%d")  # Long day with any leading zeroed
+        dNum = dNumLng.lstrip("0")     # Strip leading zeroes, if any
 
         def get_day_sufx(dNum):        # Work out "st", "nd", "rd" or "th"
             if dNum == ("1","21","31"):
@@ -38,6 +37,6 @@ while True:
         scrollphat.scroll()                # Scroll the string
         time.sleep(0.1)                    # Control the speed
 
-    except KeyboardInterrupt: # End if "Ctrl+C" is pressed
-        scrollphat.clear()
+    except KeyboardInterrupt: # Stop script if "Ctrl+C" is pressed
+        scrollphat.clear()    # Clear pHAT display before exiting
         sys.exit(-1)
