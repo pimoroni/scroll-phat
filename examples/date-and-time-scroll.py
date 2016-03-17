@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# Script to display date and time, i.e.:
 import sys
 import time
 import scrollphat
