@@ -50,7 +50,7 @@ class IS31FL3730:
         self.window.append(0xff)
 
         try:
-            self.bus.write_i2c_block_data(self.I2C_ADDR, 0x01, self.window)
+            self.bus.write_i2c_block_data(self.i2cConstants.I2C_ADDR, 0x01, self.window)
         except IOError:
             self.error_count += 1
             if self.error_count == 10:
