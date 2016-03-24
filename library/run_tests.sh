@@ -6,4 +6,4 @@ rm test/scrollphat/__init__*
 cat /dev/null >> test/scrollphat/__init__.py
 
 cd test
-python create_test.py
+python *_test.py
