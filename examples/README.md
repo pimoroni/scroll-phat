@@ -2,20 +2,20 @@
 
 Thanks in no small part to the contributions of the buccaneers mentioned below we've amassed a library of examples to help  get you started with Scroll pHAT.
 
-* `binary-clock.py` - A simple binary clock, by john-root
-* `count.py` - Count up to a number, by alexellis
+* `binary-clock.py` - A simple binary clock, by [john-root](https://github.com/john-root)
+* `count.py` - Count up to a number, by [alexellis](https://github.com/alexellis)
 * `cpu.py` - Display a graph of CPU usage
-* `ip.py` - Display IP address, contributions from alexellis and andicui
-* `life.py` - The game of life, by joosteto
-* `localweather.py` - Display local weather info, by alexellis
-* `progress.py` - Display a progress bar, by alexellis
-* `simple-text-scroll-rotated.py` - Simply scroll text, rotated 180degrees, by stuphi
+* `ip.py` - Display IP address, contributions from [alexellis](https://github.com/alexellis) and [andicui](https://github.com/andicui)
+* `life.py` - The game of life, by [joosteto](https://github.com/joosteto)
+* `localweather.py` - Display local weather info, by [alexellis](https://github.com/alexellis)
+* `progress.py` - Display a progress bar, by [alexellis](https://github.com/alexellis)
+* `simple-text-scroll-rotated.py` - Simply scroll text, rotated 180degrees, by [stuphi](https://github.com/stuphi)
 * `simple-text-scroll.py` - Simply scroll text
 * `sine.py` - Plot a sine wave
 * `test-all.py` - Test pattern for all LEDs/rows/columns
 * `turn-leds-off.py` - Turn off LEDs
-* `ukweather.py` - Display UK weather info, by campag
-* `uptime.py` - Display system uptime, by alexellis
+* `ukweather.py` - Display UK weather info, by [campag](https://github.com/campag)
+* `uptime.py` - Display system uptime, by [alexellis](https://github.com/alexellis)
 
 #Contributing
 
