@@ -2,6 +2,9 @@ import smbus
 from .font import font
 from .IS31FL3730 import IS31FL3730, I2cConstants
 
+ROTATE_OFF = False
+ROTATE_180 = True
+
 controller = IS31FL3730(smbus, font)
 
 def set_rotate(value):
@@ -18,8 +21,8 @@ def rotate5bits(x):
 def update():
     controller.update()
 
-def set_buffer(buffer):
-    controller.set_buffer(buffer)
+def set_buffer(buf):
+    controller.set_buffer(buf)
 
 def set_mode(mode):
     controller.set_mode(mode)

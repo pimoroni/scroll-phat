@@ -6,3 +6,4 @@ Changelog
 0.0.3 - bug fixes
 0.0.4 - removed dependencies, satisfied by apt
 0.0.5 - precompiled font to list, suppressed IO error flood
+0.0.6 - set_buffer, rotate setting now a set_rotation method, tidy up
