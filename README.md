@@ -15,7 +15,7 @@ We've created a super-easy installation script that will install all pre-requisi
 In the new terminal window type the following and follow the instructions:
 
 ```bash
-curl -sS get.pimoroni.com/scrollphat | bash
+curl -sS https://get.pimoroni.com/scrollphat | bash
 ```
 
 If you choose to download examples you'll find them in `/home/pi/Pimoroni/scrollphat`, but you can also check out the examples in this repo: [examples](examples)
