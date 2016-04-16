@@ -26,7 +26,7 @@ Build an image to run an example file:
 
 ```
 FROM scroll-phat
-CMD ["python", "example/count.py", "99"]
+CMD ["python", "examples/count.py", "99"]
 ```
 
 **Build example**
@@ -36,7 +36,7 @@ docker build -t scroll-phat/count .
 
 **Running example**
 ```
-docker run scroll-phat/count
+docker run --privileged scroll-phat/count
 ```
 
 ### Testing use-case
