@@ -115,6 +115,7 @@ def graph(values, low=None, high=None):
 
     col = 0
     for value in values:
+	value = float(value)
         value -= float(low)
         value += 1
         value /= float(span)
