@@ -100,6 +100,8 @@ class IS31FL3730:
     # scaling the output to the min/max values
     # supplied
     def graph(self, values, low=None, high=None):
+        values = [float(x) for x in values]
+
         if low == None:
             low = min(values)
 
@@ -108,26 +110,15 @@ class IS31FL3730:
 
         span = high - low
 
-        col = 0
-        for value in values:
+        for col, value in enumerate(values):
             value -= low
             value /= span
             value *= 5
-            value = int(value)
 
-            bits = 0
-            if value > 1:
-                bits |= 0b10000
-            if value > 2:
-                bits |= 0b11000
-            if value > 3:
-                bits |= 0b11100
-            if value > 4:
-                bits |= 0b11111
-            if value > 5:
-                bits |= 0b11111
-            self.set_col(col, bits)
-            col += 1
+            if value > 5: value = 5
+            if value < 0: value = 0
+
+            self.set_col(col, [0,16,24,28,30,31][int(value)])
 
         self.update()
 
