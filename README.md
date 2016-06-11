@@ -2,7 +2,7 @@
 
 11x5 pixels of single-colour, message scrolling goodness!
 
-https://shop.pimoroni.com/collections/raspberry-pi-zero/products/scroll-phat
+https://shop.pimoroni.com/products/scroll-phat
 
 #Installing
 
