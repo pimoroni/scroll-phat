@@ -1,10 +1,8 @@
-#Scroll pHAT
+![Scroll pHAT](scroll-phat-logo.png)
 
-*Note:* This library is still a little bit beta, we've been rushed off our feet and haven't had time to refine it and come up with a lot of examples. Sorry! It mostly works, though!
+11x5 pixels of single-colour, message scrolling goodness!
 
-11x5 pixels of message scrolling goodness!
-
-https://shop.pimoroni.com/collections/raspberry-pi-zero/products/scroll-phat
+https://shop.pimoroni.com/products/scroll-phat
 
 #Installing
 
