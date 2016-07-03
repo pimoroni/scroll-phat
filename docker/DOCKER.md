@@ -4,7 +4,6 @@ Fully tested Dockerfile for using scroll-phat library without needing to install
 
 Building
 ```
-$ cd library
 $ ./docker_build.sh
 ```
 
