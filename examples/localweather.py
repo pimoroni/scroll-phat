@@ -65,7 +65,7 @@ if(__name__ == '__main__'):
         # Feel free to pick out other data here, for the scrolling message
         for x in range(0, 2):
             item = weather["query"]["results"]["channel"]["item"]["forecast"][x]
-            output = output + item["day"] +": " + item["text"] + " - L: "+ item["low"] + "F - H: "+ item["high"]+"F"
+            output = output + " " +  item["day"] +": " + item["text"] + " - L: "+ item["low"] + "F - H: "+ item["high"]+"F"
 
         print(output)
         scroll_message(output)
