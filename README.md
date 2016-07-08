@@ -1,4 +1,4 @@
-![Scroll pHAT](scroll-phat-logo.png)
+![Scroll pHAT](scroll-phat-logo-new.png)
 
 11x5 pixels of single-colour, message scrolling goodness!
 
