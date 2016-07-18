@@ -14,7 +14,7 @@ Section: python
 Depends: ${misc:Depends}, ${python:Depends}, python-smbus
 Suggests: i2c-tools, python-psutil
 Description: python library designed to control Scroll pHAT.
-The Scroll pHAT provides a matrix of 55 white LED pixels that is ideal
+ The Scroll pHAT provides a matrix of 55 white LED pixels that is ideal
  for writing messages, showing graphs, and drawing pictures.
  .
  This is the Python 2 version of the package.
