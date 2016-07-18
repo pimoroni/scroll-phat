@@ -1,23 +1,22 @@
-Fully tested Dockerfile for using scroll-phat library without needing to install it on base system.
+### Dockerfile for using the `scrollphat` library without needing to install it on base system.
 
-> This is unobtrusively squirrelled away in the library folder for those who are curious and interested in learning about Docker and the PI. Tested with the count.py example.
+For instructions on installing Docker on the PI Zero visit https://github.com/alexellis/docker-arm
 
 Building
 ```
-$ cd library
-$ ./docker_build.sh
+$ ./build_docker.sh
 ```
 
 Running in repl
 ```
 $ docker run -ti --privileged scroll-phat
-Python 2.7.9 (default, Mar  8 2015, 00:52:26) 
+Python 2.7.9 (default, Mar  8 2015, 00:52:26)
 [GCC 4.9.2] on linux2
 Type "help", "copyright", "credits" or "license" for more information.
 >>> import scrollphat
 >>> scrollphat.set_pixel(1,1,True)
 >>> scrollphat.update()
->>> 
+>>>
 ```
 
 Build an image to run an example file:
@@ -46,7 +45,7 @@ docker run --privileged scroll-phat/count
 
 * Can easily have an image with only Python2, only Python3 and both - for testing.
 
-Previously this would have involved hacks and work-arounds. 
+Previously this would have involved hacks and work-arounds.
 
 ### Deployment use-case
 
@@ -59,4 +58,3 @@ Previously this would have involved hacks and work-arounds.
 * Maintainer builds image
 * Maintainer uploads to Docker Hub
 * Consumer/enthusiast pulls image, runs exactly the same as it did for the maintainer.
-
