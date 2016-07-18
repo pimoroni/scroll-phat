@@ -12,8 +12,8 @@ if [ $gettools == "yes" ]; then
 fi
 
 if [ $setup == "yes" ]; then
-    rm -R ../library/build ../library/debian
-    cp -R ./debian ../library/
+    rm -R ../library/build ../library/debian &> /dev/null
+    cp -R ./debian/ ../library/
 fi
 
 cd ../library && debuild
@@ -24,7 +24,7 @@ done
 
 if [ $cleanup == "yes" ]; then
     debuild clean
-    rm -R ./build ./debian
+    rm -R ./build ./debian &> /dev/null
 fi
 
 exit 0
