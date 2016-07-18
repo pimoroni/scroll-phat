@@ -1,0 +1,12 @@
+README
+
+The Scroll pHAT provides a matrix of 55 white LED pixels that is ideal for writing messages, showing graphs, and drawing pictures. Perfect for RPi Zero but works with A+/B+/2 too!
+
+Learn more: https://shop.pimoroni.com/products/scroll-phat
+For examples run: `curl -sS get.pimoroni.com/scrollphat | bash`
+
+IMPORTANT
+
+Scroll pHAT requires i2c.
+To enable run `curl get.pimoroni.com/i2c | bash`
+or use raspi-config and reboot your Raspberry Pi.
