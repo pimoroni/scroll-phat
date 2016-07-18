@@ -12,7 +12,7 @@ if [ $gettools == "yes" ]; then
 fi
 
 if [ $setup == "yes" ]; then
-    rm -R ./build ./debian
+    rm -R ../library/build ../library/debian
     cp -R ./debian ../library/
 fi
 
