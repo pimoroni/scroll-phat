@@ -1,6 +1,6 @@
 ### Dockerfile for using the `scrollphat` library without needing to install it on base system.
 
-For instructions on installing Docker on the PI Zero visit http://blog.alexellis.io/dockerswarm-pizero/
+For instructions on installing Docker on the PI Zero visit https://github.com/alexellis/docker-arm
 
 Building
 ```
