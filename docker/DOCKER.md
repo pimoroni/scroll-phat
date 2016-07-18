@@ -1,11 +1,8 @@
 Fully tested Dockerfile for using scroll-phat library without needing to install it on base system.
 
-> This is unobtrusively squirrelled away in the library folder for those who are curious and interested in learning about Docker and the PI. Tested with the count.py example.
-
 Building
 ```
-$ cd library
-$ ./docker_build.sh
+$ ./build_docker.sh
 ```
 
 Running in repl
