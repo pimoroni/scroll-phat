@@ -18,11 +18,14 @@ curl -sS https://get.pimoroni.com/scrollphat | bash
 
 If you choose to download examples you'll find them in `/home/pi/Pimoroni/scrollphat`, but you can also check out the examples in this repo: [examples](examples)
 
-# Resetting
+# Docker image
 
-To turn off all the LEDs, run the turn_leds_off.py script, or in Python:
+For those who are curious and interested in learning about Docker and the PI, this repository includes a fully tested Dockerfile for using the scrollphat library without needing to install it on the base system.
 
-```python
-import scrollphat
-scrollphat.clear()
+To build, cd into the docker directory and run:
+
 ```
+$ ./build_docker.sh
+```
+
+For complete instructions, see DOCKER.md in the same directory.
