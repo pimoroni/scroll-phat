@@ -1,1 +1,1 @@
-# Scroll pHAT
+# Scroll pHAT Pure Python Library
