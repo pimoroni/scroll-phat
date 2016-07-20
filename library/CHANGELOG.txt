@@ -1,26 +1,35 @@
 0.0.6
+-----
 
 * set_buffer
 * rotate setting now a set_rotation method
 * tidy up
 
 0.0.5
+-----
 
 * precompiled font to list
 * suppressed IO error flood
 
 0.0.4
+-----
 
 * removed dependencies satisfied by apt
 
 0.0.3
+-----
 
 * various bug fixes
 
 0.0.2
+-----
 
-* program and install bug fixes 
+* program and install bug fixes
+
+ 
 
 0.0.1
+-----
 
 * Initial release
+
