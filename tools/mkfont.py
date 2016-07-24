@@ -1,5 +1,10 @@
-from PIL import Image
 import os
+
+try:
+    from PIL import Image
+except ImportError:
+    exit("This script requires the PIL module\nInstall with: sudo pip install PIL")
+
 
 font = {}
 

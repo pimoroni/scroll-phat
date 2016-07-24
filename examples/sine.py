@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
-import scrollphat
 import math
-import time
 import sys
+import time
+
+import scrollphat
+
 
 i = 0
 buf = [0] * 11

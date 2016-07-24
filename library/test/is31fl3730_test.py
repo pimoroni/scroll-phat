@@ -1,5 +1,7 @@
 import unittest
+
 from scrollphat.IS31FL3730 import IS31FL3730, I2cConstants
+
 
 # Fakes i2c to allow testing off-device
 # - May return canned data (stubbing)

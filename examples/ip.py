@@ -1,26 +1,31 @@
 #!/usr/bin/env python
 
+# Retrieve and print either the public IP or an internal IP address for an
+# adapter such as wlan0 by passing it as an argument to the program.
+# sudo python wlan0 => 192.168.0.x (useful for wifi hotspots)
+#
+# requires: netifaces for looking up IP in readable way
+# requires: requests human readable HTTP requests
+#
 # Usage:
 # "sudo python ip.py"
 # Prints out your public IP address
 #
 # "sudo python ip.py internal"
 # Prints out your internal, i.e. wi-fi or DHCP IP address
-#
 
-import time
-import scrollphat
+import json
 import socket
 import sys
-import requests
-import json
+import time
 
-# requires: netifaces for looking up IP in readable way
-# requires: requests human readable HTTP requests
+try:
+    import requests
+except ImportError:
+    exit("This script requires the requests module\nInstall with: sudo pip install requests")
 
-# Retrieve and print either the public IP or an internal IP address for an
-# adapter such as wlan0 by passing it as an argument to the program.
-# sudo python wlan0 => 192.168.0.x (useful for wifi hotspots)
+import scrollphat
+
 
 def get_internal_ip():
     # As an alternative, look into netifaces package - pip install netifaces

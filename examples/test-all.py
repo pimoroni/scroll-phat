@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
 import math
-import time
-import scrollphat
 import sys
+import time
+
+import scrollphat
+
 
 def millis():
     return int(round(time.time() * 1000))

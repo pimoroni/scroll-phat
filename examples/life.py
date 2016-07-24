@@ -1,7 +1,11 @@
-import scrollphat
+#!/usr/bin/env python
+
+import copy
 import random
 import time
-import copy
+
+import scrollphat
+
 
 def scroll_life(delay):
     def count_neighbours(ibuf, i, j):

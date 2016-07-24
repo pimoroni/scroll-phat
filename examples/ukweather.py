@@ -1,11 +1,17 @@
 #!/usr/bin/env python
-from __future__ import print_function
 
-import feedparser
-import scrollphat
+from __future__ import print_function
+import subprocess
 import sys
 import time
-import subprocess
+
+try:
+    import feedparser
+except ImportError:
+    exit("This script requires the feedparser module\nInstall with: sudo pip install feedparser") 
+
+import scrollphat
+
 
 scrollphat.set_brightness(4)
 
