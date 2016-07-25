@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
-import scrollphat
+import subprocess
 import sys
 import time
-import subprocess
+
+import scrollphat
+
 
 scrollphat.set_brightness(4)
 

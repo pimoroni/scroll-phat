@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 
-import scrollphat
 import sys
 import time
+
+import scrollphat
+
 
 if(len(sys.argv) == 1):
     print("Type a number in under 999 as an argument.")

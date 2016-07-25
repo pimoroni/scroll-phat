@@ -1,15 +1,21 @@
 #!/usr/bin/env python
 
-import time
-import scrollphat
-import socket
-import sys
-import requests
-import json
-import urllib
-
 # requires: netifaces for looking up IP in readable way
 # requires: requests human readable HTTP requests
+
+import json
+import socket
+import sys
+import time
+import urllib
+
+try:
+    import requests
+except ImportError:
+    exit("This script requires the requests module\nInstall with: sudo pip install requests")
+
+import scrollphat
+
 
 def get_location():
     res = requests.get('http://ipinfo.io')

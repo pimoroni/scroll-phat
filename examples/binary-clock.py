@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 
-import scrollphat
-import time
-import sys
-
 # simple binary clock
 # bcd for hours, minutes and seconds
 # chart for time past the hour (one light per whole ten minutes)
 # please see disclaimer at bottom of file
+
+import sys
+import time
+
+import scrollphat
 
 
 def string_to_bcd(digit):

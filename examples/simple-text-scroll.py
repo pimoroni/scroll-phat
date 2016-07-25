@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 
-import scrollphat
 import sys
 import time
+
+import scrollphat
+
 
 if len(sys.argv) != 2:
     print("\nusage: python simple-text-scroll.py \"message\" \npress CTRL-C to exit\n")

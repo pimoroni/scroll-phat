@@ -1,6 +1,14 @@
-import smbus
+try:
+    import smbus
+except ImportError:
+    if sys.version_info[0] < 3:
+        exit("This library requires python-smbus\nInstall with: sudo apt-get install python-smbus")
+    elif sys.version_info[0] == 3:
+        exit("This library requires python3-smbus\nInstall with: sudo apt-get install python3-smbus")
+
 from .font import font
 from .IS31FL3730 import IS31FL3730, I2cConstants
+
 
 ROTATE_OFF = False
 ROTATE_180 = True

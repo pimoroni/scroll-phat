@@ -1,5 +1,10 @@
-from PIL import Image
 import os
+
+try:
+    from PIL import Image
+except ImportError:
+    exit("This script requires the pillow module\nInstall with: sudo pip install pillow")
+
 
 font = {}
 
