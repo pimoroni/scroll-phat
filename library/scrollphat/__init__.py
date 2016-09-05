@@ -137,7 +137,7 @@ def set_pixels(handler, auto_update=False):
 
     Useful for displaying patterns and animations, or the result of simple functions. For example::
 
-    scrollphat.set_pixels(lambda x, y: (x + y) % 2, True)
+        scrollphat.set_pixels(lambda x, y: (x + y) % 2, True)
 
     Will display a check pattern.
 
