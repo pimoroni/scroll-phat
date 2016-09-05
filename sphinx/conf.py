@@ -9,7 +9,7 @@ PACKAGE_HANDLE = "ScrollpHAT"
 PACKAGE_MODULE = "scrollphat"
 
 # Prompte /usr/local/lib to the front of sys.path
-sys.path.insert(0,site.getsitepackages()[0])
+#sys.path.insert(0,site.getsitepackages()[0])
 
 import sphinx_rtd_theme
 
