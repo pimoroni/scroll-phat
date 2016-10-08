@@ -9,7 +9,7 @@ class I2cConstants:
         self.MODE_5X11 = 0b00000011
 
 class IS31FL3730:
-    def __init__(self, i2c_bus=None, addr=ADDR, font):
+    def __init__(self, font, i2c_bus=None, addr=ADDR):
         self.i2cConstants = I2cConstants()
 
         self.i2c_bus = i2c_bus
