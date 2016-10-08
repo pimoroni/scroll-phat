@@ -1,13 +1,4 @@
-from sys import exit, version_info
-
-try:
-    import smbus
-except ImportError:
-    if version_info[0] < 3:
-        exit("This library requires python-smbus\nInstall with: sudo apt-get install python-smbus")
-    elif version_info[0] == 3:
-        exit("This library requires python3-smbus\nInstall with: sudo apt-get install python3-smbus")
-
+from .i2c_bus import bus
 from .font import font
 from .IS31FL3730 import IS31FL3730, I2cConstants
 
@@ -15,7 +6,7 @@ from .IS31FL3730 import IS31FL3730, I2cConstants
 ROTATE_OFF = False
 ROTATE_180 = True
 
-controller = IS31FL3730(smbus, font)
+controller = IS31FL3730(bus, font)
 
 def set_rotate(value):
     """Set the rotation of Scroll pHAT

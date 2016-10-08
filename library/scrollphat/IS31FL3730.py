@@ -1,20 +1,21 @@
-MODE_5X11 = 0b00000011
+ADDR = 0x60
 
 class I2cConstants:
     def __init__(self):
-        self.I2C_ADDR = 0x60
         self.CMD_SET_MODE = 0x00
         self.CMD_SET_BRIGHTNESS = 0x19
         self.MODE_5X11 = 0b00000011
 
 class IS31FL3730:
-    def __init__(self, smbus, font):
-        self.bus = smbus
-        self.font = font
+    def __init__(self, i2c_bus=None, addr=ADDR, font):
         self.i2cConstants = I2cConstants()
-        self._rotate = False
 
-        self.bus = self.bus.SMBus(1)
+        self.i2c_bus = i2c_bus
+        if not hasattr(i2c_bus, "write_i2c_block_data") or not hasattr(i2c_bus, "read_i2c_block_data"):
+            raise TypeError("Object given for i2c_bus must implement write_i2c_block_data and read_i2c_block_data")
+
+        self.font = font
+        self._rotate = False
         self.buffer = [0] * 11
         self.offset = 0
         self.error_count = 0
@@ -52,14 +53,14 @@ class IS31FL3730:
         self.window.append(0xff)
 
         try:
-            self.bus.write_i2c_block_data(self.i2cConstants.I2C_ADDR, 0x01, self.window)
+            self.i2c_bus.write_i2c_block_data(ADDR, 0x01, self.window)
         except IOError:
             self.error_count += 1
             if self.error_count == 10:
                 print("A high number of IO Errors have occurred, please check your soldering/connections.")
 
     def set_mode(self, mode=MODE_5X11):
-        self.bus.write_i2c_block_data(self.i2cConstants.I2C_ADDR, self.i2cConstants.CMD_SET_MODE, [self.i2cConstants.MODE_5X11])
+        self.i2c_bus.write_i2c_block_data(ADDR, self.i2cConstants.CMD_SET_MODE, [self.i2cConstants.MODE_5X11])
 
     def get_brightness(self):
         if hasattr(self, 'brightness'):
@@ -68,7 +69,7 @@ class IS31FL3730:
 
     def set_brightness(self, brightness):
         self.brightness = brightness
-        self.bus.write_i2c_block_data(self.i2cConstants.I2C_ADDR, self.i2cConstants.CMD_SET_BRIGHTNESS, [self.brightness])
+        self.i2c_bus.write_i2c_block_data(ADDR, self.i2cConstants.CMD_SET_BRIGHTNESS, [self.brightness])
 
     def set_col(self, x, value):
         if len(self.buffer) <= x:
