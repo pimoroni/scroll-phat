@@ -165,3 +165,25 @@ def set_pixels(handler, auto_update=False):
             set_pixel(x, y, handler(x, y))
     if auto_update:
         update()
+
+
+"""Experimental: Methods dedicated to altcontroller on i2c0 bus"""
+
+def alt_set_brightness(brightness):
+    altcontroller.set_brightness(brightness)
+
+def alt_set_pixel(x,y,value):
+    altcontroller.set_pixel(x,y,value)
+
+def alt_set_pixels(handler, auto_update=False):
+    for x in range(11):
+        for y in range(5):
+            alt_set_pixel(x, y, handler(x, y))
+    if auto_update:
+        alt_update()
+
+def alt_update():
+    altcontroller.update()
+
+def alt_clear():
+    altcontroller.clear()
