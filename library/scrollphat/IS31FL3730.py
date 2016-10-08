@@ -14,8 +14,8 @@ class IS31FL3730:
         self.i2cConstants = I2cConstants()
 
         self.i2c_bus = i2c_bus
-        if not hasattr(i2c_bus, "write_i2c_block_data") or not hasattr(i2c_bus, "read_i2c_block_data"):
-            raise TypeError("Object given for i2c_bus must implement write_i2c_block_data and read_i2c_block_data")
+        if not hasattr(i2c_bus, "write_i2c_block_data"):
+            raise TypeError("Object given for i2c_bus must implement write_i2c_block_data")
 
         self.addr = addr
         self.font = font
