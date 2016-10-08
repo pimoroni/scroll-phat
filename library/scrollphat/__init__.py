@@ -169,8 +169,14 @@ def set_pixels(handler, auto_update=False):
 
 """Experimental: Methods dedicated to altcontroller on i2c0 bus"""
 
+def alt_set_buffer(buf):
+    altcontroller.set_buffer(buf)
+
 def alt_set_brightness(brightness):
     altcontroller.set_brightness(brightness)
+
+def alt_set_col(x, value):
+    altcontroller.set_col(x, value)
 
 def alt_set_pixel(x,y,value):
     altcontroller.set_pixel(x,y,value)
@@ -182,14 +188,38 @@ def alt_set_pixels(handler, auto_update=False):
     if auto_update:
         alt_update()
 
+def alt_set_rotate(value):
+    altcontroller.set_rotate(value)
+
+def alt_rotate5bits(x):
+    altcontroller.rotate5bits(x)
+
 def alt_scroll(delta = 1):
     altcontroller.scroll(delta)
 
+def alt_scroll_to(pos = 0):
+    altcontroller.scroll_to(pos)
+
+def alt_graph(values, low=None, high=None):
+    altcontroller.graph(values, low, high)
+
 def alt_write_string( chars, x = 0):
     altcontroller.write_string(chars,x)
+
+def alt_io_errors():
+    return altcontroller.io_errors()
+
+def alt_buffer_len():
+    return altcontroller.buffer_len()
+
+def alt_load_font(new_font):
+    altcontroller.load_font(new_font)
 
 def alt_update():
     altcontroller.update()
 
 def alt_clear():
     altcontroller.clear()
+
+def alt_clear_buffer():
+    altcontroller.clear_buffer()
