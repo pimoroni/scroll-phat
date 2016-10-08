@@ -16,7 +16,7 @@ except IOError:
 
 if mainbus != None:
     try:
-        altcontroller = IS31FL3730(font, altbus)
+        altscrollphat = IS31FL3730(font, altbus)
     except (NameError, IOError):
         pass
 else:
