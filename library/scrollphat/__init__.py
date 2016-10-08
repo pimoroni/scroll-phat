@@ -182,6 +182,12 @@ def alt_set_pixels(handler, auto_update=False):
     if auto_update:
         alt_update()
 
+def alt_scroll(delta = 1):
+    altcontroller.scroll(delta)
+
+def alt_write_string( chars, x = 0):
+    altcontroller.write_string(chars,x)
+
 def alt_update():
     altcontroller.update()
 
