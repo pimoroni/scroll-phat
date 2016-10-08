@@ -1,7 +1,5 @@
 ADDR = 0x60
 MODE_5X11 = 0b00000011
-ROTATE_OFF = False
-ROTATE_180 = True
 
 class I2cConstants:
     def __init__(self):
