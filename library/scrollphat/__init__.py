@@ -17,12 +17,12 @@ except IOError:
 if mainbus != None:
     try:
         altcontroller = IS31FL3730(font, altbus)
-except (NameError, IOError):
+    except (NameError, IOError):
         pass
 else:
     try:
         controller = IS31FL3730(font, altbus)
-except (NameError, IOError):
+    except (NameError, IOError):
         exit("Scroll pHAT can't be detected!")
         
 
