@@ -1,5 +1,3 @@
-from .font import font
-
 ADDR = 0x60
 MODE_5X11 = 0b00000011
 
