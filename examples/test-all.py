@@ -6,10 +6,12 @@ import time
 
 import scrollphat
 
-def millis():
-    return int(round(time.time() * 1000))
 
 scrollphat.set_brightness(2)
+
+
+def millis():
+    return int(round(time.time() * 1000))
 
 def set_checker(offset):
     n = offset
@@ -18,6 +20,7 @@ def set_checker(offset):
             scrollphat.set_pixel(x,y,n % 2 == 0)
             n += 1
     scrollphat.update()
+
 
 while True:
     try:
