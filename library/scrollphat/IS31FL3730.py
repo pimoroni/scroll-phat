@@ -1,3 +1,5 @@
+from .font import font
+
 ADDR = 0x60
 
 class I2cConstants:
@@ -7,7 +9,7 @@ class I2cConstants:
         self.MODE_5X11 = 0b00000011
 
 class IS31FL3730:
-    def __init__(self, i2c_bus=None, font, addr=ADDR):
+    def __init__(self, i2c_bus=None, addr=ADDR, font):
         self.i2cConstants = I2cConstants()
 
         self.i2c_bus = i2c_bus

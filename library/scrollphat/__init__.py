@@ -1,12 +1,11 @@
 from .i2c_bus import bus
-from .font import font
 from .IS31FL3730 import IS31FL3730
 
 
 ROTATE_OFF = False
 ROTATE_180 = True
 
-controller = IS31FL3730(bus, font)
+controller = IS31FL3730(bus)
 
 def set_rotate(value):
     """Set the rotation of Scroll pHAT
