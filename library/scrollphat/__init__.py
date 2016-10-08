@@ -1,6 +1,6 @@
 from .i2c_bus import bus
 from .font import font
-from .IS31FL3730 import IS31FL3730, I2cConstants
+from .IS31FL3730 import IS31FL3730
 
 
 ROTATE_OFF = False
