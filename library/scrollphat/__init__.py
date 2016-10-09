@@ -1,19 +1,35 @@
+from .i2c_bus import bus
 try:
-    import smbus
+    from .i2c_bus import altbus
 except ImportError:
-    if sys.version_info[0] < 3:
-        exit("This library requires python-smbus\nInstall with: sudo apt-get install python-smbus")
-    elif sys.version_info[0] == 3:
-        exit("This library requires python3-smbus\nInstall with: sudo apt-get install python3-smbus")
+    pass
 
 from .font import font
-from .IS31FL3730 import IS31FL3730, I2cConstants
+from .IS31FL3730 import IS31FL3730
+
+
+mainbus = bus
+
+try:
+    controller = IS31FL3730(font, bus)
+except IOError:
+    mainbus = None
+
+if mainbus != None:
+    try:
+        altcontroller = IS31FL3730(font, altbus)
+    except (NameError, IOError):
+        pass
+else:
+    try:
+        controller = IS31FL3730(font, altbus)
+    except (NameError, IOError):
+        exit("Scroll pHAT can't be detected!")
 
 
 ROTATE_OFF = False
 ROTATE_180 = True
 
-controller = IS31FL3730(smbus, font)
 
 def set_rotate(value):
     """Set the rotation of Scroll pHAT
@@ -149,3 +165,61 @@ def set_pixels(handler, auto_update=False):
             set_pixel(x, y, handler(x, y))
     if auto_update:
         update()
+
+
+"""Experimental: Methods dedicated to altcontroller on i2c0 bus"""
+
+def alt_set_buffer(buf):
+    altcontroller.set_buffer(buf)
+
+def alt_set_brightness(brightness):
+    altcontroller.set_brightness(brightness)
+
+def alt_set_col(x, value):
+    altcontroller.set_col(x, value)
+
+def alt_set_pixel(x,y,value):
+    altcontroller.set_pixel(x,y,value)
+
+def alt_set_pixels(handler, auto_update=False):
+    for x in range(11):
+        for y in range(5):
+            alt_set_pixel(x, y, handler(x, y))
+    if auto_update:
+        alt_update()
+
+def alt_set_rotate(value):
+    altcontroller.set_rotate(value)
+
+def alt_rotate5bits(x):
+    altcontroller.rotate5bits(x)
+
+def alt_scroll(delta = 1):
+    altcontroller.scroll(delta)
+
+def alt_scroll_to(pos = 0):
+    altcontroller.scroll_to(pos)
+
+def alt_graph(values, low=None, high=None):
+    altcontroller.graph(values, low, high)
+
+def alt_write_string( chars, x = 0):
+    altcontroller.write_string(chars,x)
+
+def alt_io_errors():
+    return altcontroller.io_errors()
+
+def alt_buffer_len():
+    return altcontroller.buffer_len()
+
+def alt_load_font(new_font):
+    altcontroller.load_font(new_font)
+
+def alt_update():
+    altcontroller.update()
+
+def alt_clear():
+    altcontroller.clear()
+
+def alt_clear_buffer():
+    altcontroller.clear_buffer()
