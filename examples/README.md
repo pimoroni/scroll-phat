@@ -9,8 +9,10 @@ Thanks in no small part to the contributions of the buccaneers mentioned below w
 * `life.py` - The game of life, by [joosteto](https://github.com/joosteto)
 * `localweather.py` - Display local weather info, by [alexellis](https://github.com/alexellis)
 * `progress.py` - Display a progress bar, by [alexellis](https://github.com/alexellis)
-* `simple-text-scroll-rotated.py` - Simply scroll text, rotated 180degrees, by [stuphi](https://github.com/stuphi)
-* `simple-text-scroll.py` - Simply scroll text
+* `scroll-text-forever.py` - Continuously scrolls text
+* `scroll-text-once.py` - Scrolls text once, by [roguem](https://github.com/roguem)
+* `scroll-text-quickstart.py` - Scrolls text without offset start
+* `scroll-text-rotated.py` - Scrolls text rotated 180degrees, by [stuphi](https://github.com/stuphi)
 * `sine.py` - Plot a sine wave
 * `test-all.py` - Test pattern for all LEDs/rows/columns
 * `turn-leds-off.py` - Turn off LEDs
