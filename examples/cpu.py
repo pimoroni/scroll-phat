@@ -6,7 +6,7 @@ import time
 try:
     import psutil
 except ImportError:
-    exit("This script requires the psutil module\nInstall with: sudo pip install psutil")
+    sys.exit("This script requires the psutil module\nInstall with: sudo pip install psutil")
 
 import scrollphat
 

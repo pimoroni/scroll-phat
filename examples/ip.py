@@ -22,7 +22,7 @@ import time
 try:
     import requests
 except ImportError:
-    exit("This script requires the requests module\nInstall with: sudo pip install requests")
+    sys.exit("This script requires the requests module\nInstall with: sudo pip install requests")
 
 import scrollphat
 
@@ -58,7 +58,7 @@ print(address_mode + " IP Address: " +str(ip))
 
 scrollphat.set_brightness(3)
 
-while True:	
+while True: 
     try:
         scrollphat.clear()
         scrollphat.write_string("IP: " + str(ip) + "    ")
