@@ -8,7 +8,7 @@ import time
 try:
     import feedparser
 except ImportError:
-    exit("This script requires the feedparser module\nInstall with: sudo pip install feedparser") 
+    sys.exit("This script requires the feedparser module\nInstall with: sudo pip install feedparser") 
 
 import scrollphat
 

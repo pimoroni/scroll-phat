@@ -5,9 +5,9 @@
 
 import json
 import socket
-import sys
 import time
 import urllib
+from sys import exit
 
 try:
     import requests
