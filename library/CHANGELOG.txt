@@ -1,3 +1,9 @@
+0.0.7
+-----
+
+* added DocStrings
+* minor fixes to missing smbus warning
+
 0.0.6
 -----
 
