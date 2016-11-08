@@ -1,3 +1,10 @@
+scrollphat (0.0.7) stable; urgency=low
+
+  * added DocStrings
+  * minor fixes to missing smbus warning
+
+ -- Phil Howard <phil@pimoroni.com>  Tue, 8 Nov 2016 00:00:00 +0000
+
 scrollphat (0.0.6) UNRELEASED; urgency=low
 
   * set_buffer

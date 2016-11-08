@@ -12,6 +12,8 @@ from .font import font
 from .IS31FL3730 import IS31FL3730, I2cConstants
 
 
+__version__ = '0.0.7'
+
 ROTATE_OFF = False
 ROTATE_180 = True
 
