@@ -1,6 +1,7 @@
 0.0.7
 -----
 
+* Added __version__ to module
 * added DocStrings
 * minor fixes to missing smbus warning
 
