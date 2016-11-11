@@ -1,5 +1,6 @@
 scrollphat (0.0.7) stable; urgency=low
 
+  * Added __version__ to module
   * added DocStrings
   * minor fixes to missing smbus warning
 
