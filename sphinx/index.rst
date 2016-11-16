@@ -12,6 +12,12 @@ The Scroll pHAT provides a matrix of 55 white LED pixels that is ideal for writi
 * Learn more about Scroll pHAT: https://shop.pimoroni.com/products/scroll-phat
 * Contribute examples & fixes: https://github.com/pimoroni/scroll-phat
 
+At A Glance
+-----------
+
+.. automoduleoutline:: scrollphat
+   :members:
+
 .. toctree::
    :titlesonly:
    :maxdepth: 0
