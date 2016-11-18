@@ -4,13 +4,15 @@
 Welcome
 -------
 
-Welcome to the Scroll pHAT documentation. This page will guide you through the methods
-available in the Scroll pHAT python library.
+This documentation will guide you through the methods available in the Scroll pHAT python library.
 
 The Scroll pHAT provides a matrix of 55 white LED pixels that is ideal for writing messages, showing graphs, and drawing pictures. Use it to output your IP address, show CPU usage, or just play pong!
 
-* Learn more about Scroll pHAT: https://shop.pimoroni.com/products/scroll-phat
-* Contribute examples & fixes: https://github.com/pimoroni/scroll-phat
+* More information - https://shop.pimoroni.com/products/scroll-phat
+* Get the code - https://github.com/pimoroni/scroll-phat
+* GPIO pinout - https://pinout.xyz/pinout/scroll_phat
+* Soldering - https://learn.pimoroni.com/tutorial/sandyj/soldering-phats
+* Get help - http://forums.pimoroni.com/c/support
 
 At A Glance
 -----------
