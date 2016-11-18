@@ -41,6 +41,7 @@ code.literal {
     border:none;
     background:#f0f0f0;
 }
+.rst-content #module-scrollphat dl:not(.docutils) dd, 
 .rst-content #module-scrollphat dl:not(.docutils) dd dl:not(.docutils) dd {
     display:none;
 }
