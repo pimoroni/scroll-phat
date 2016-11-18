@@ -34,16 +34,16 @@ code.literal {
 }
 
 
-.rst-content #module-mote {
+.rst-content #module-scrollphat {
     margin-bottom:24px;
 }
-.rst-content #module-mote dl:not(.docutils) dt {
+.rst-content #module-scrollphat dl:not(.docutils) dt {
     border:none;
     background:#f0f0f0;
 }
-.rst-content #module-mote dl:not(.docutils) dd dl:not(.docutils) dd {
+.rst-content #module-scrollphat dl:not(.docutils) dd dl:not(.docutils) dd {
     display:none;
 }
-.rst-content #module-mote dl:not(.docutils) {
+.rst-content #module-scrollphat dl:not(.docutils) {
     margin-bottom:0;
 }
