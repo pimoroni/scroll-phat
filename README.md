@@ -4,7 +4,7 @@
 
 https://shop.pimoroni.com/products/scroll-phat
 
-#Installing
+##Installing
 
 **Full install ( recommended ):**
 
@@ -48,7 +48,14 @@ sudo pip2 install scrollphat
 
 In all cases you will have to enable the i2c bus.
 
-# Docker image
+##Documentation & Support
+
+* Getting started - https://learn.pimoroni.com/tutorial/sandyj/soldering-phats
+* Function reference - http://docs.pimoroni.com/scrollphat/
+* GPIO Pinout - https://pinout.xyz/pinout/scroll_phat
+* Get help - http://forums.pimoroni.com/c/support
+
+##Docker image
 
 For those who are curious and interested in learning about Docker and the PI, this repository includes a fully tested Dockerfile for using the scrollphat library without needing to install it on the base system.
 
