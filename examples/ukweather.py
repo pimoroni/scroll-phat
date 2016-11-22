@@ -23,8 +23,8 @@ refresh_interval = 60*30
 if len(sys.argv)==2:
     postcode = sys.argv[1]
 else:
-    print("Usage: ./bbcweather.py area")
-    print("eg ./bbcweather.py SW19")
+    print("Usage: ./ukweather.py area")
+    print("eg ./ukweather.py SW19")
     print("Defaulting to Sheffield-on-Sea")
     postcode = "S2" # Sheffield-on-Sea
 
