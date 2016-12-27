@@ -1,18 +1,22 @@
-FROM alexellis2/python-gpio:armv6
-# This base image will be fetched automatically from the Docker Hub
-# https://hub.docker.com/r/alexellis2/python-gpio/
+FROM resin/rpi-raspbian
+MAINTAINER alexellis2@gmail.com
+ENTRYPOINT []
 
-# For instructions on installing Docker on the PI Zero visit below tutorial
-# http://blog.alexellis.io/dockerswarm-pizero/
+RUN mkdir -p /root/scroll-phat
+WORKDIR /root/scroll-phat/
 
-RUN apt-get update && \
-    apt-get -qy install python-smbus i2c-tools
+RUN apt-get update \
+    && apt-get install \
+       python-dev \
+       python-smbus \
+       i2c-tools \
+       python-pip \
+       gcc
 
-ADD ./examples  ./examples
-ADD ./library   ./library
-ADD ./tools     ./tools
+COPY ./examples  ./examples
+COPY ./library   ./library
+COPY ./tools     ./examples
 
-RUN cd library && \
-    python setup.py install
+RUN cd library && python setup.py install
 
 CMD ["python"]
