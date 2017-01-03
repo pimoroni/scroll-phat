@@ -15,7 +15,7 @@ RUN apt-get update \
 
 COPY ./examples  ./examples
 COPY ./library   ./library
-COPY ./tools     ./examples
+COPY ./tools     ./tools
 
 RUN cd library && python setup.py install
 
