@@ -5,7 +5,7 @@ import time
 import scrollphat
 
 #-----------------------------------------------------------------------------
-# This example use a custome font set, read from
+# This example uses a custome font set, read from
 # the image file my-font, which has the lower-case
 # letters replaced with symbols.
 # For example:
@@ -23,13 +23,13 @@ except ImportError:
     exit("This script requires the pillow module\nInstall with: sudo pip install pillow")
 
 #-----------------------------------------------------------------------------
-# This funtion will read the supplied image 
-# and convert it into font data for Scoll pHAT . 
-# The expect format of the image is as follows: 
-# Each font image contains a 16 x 6 table of squares, 
-# one for each ASCII character, starting with a space (0x20) and 
-#  incrementing from left to right. Each square is 6x6 box 
-# boarding the 5x5 image of the individual characters. 
+# This funtion will read the supplied image
+# and convert it into font data for Scoll pHAT.
+# The expect format of the image is as follows:
+# Each font image contains a 16 x 6 table of squares,
+# one for each ASCII character, starting with a space (0x20) and
+#  incrementing from left to right. Each square is 6x6 box
+# boarding the 5x5 image of the individual characters.
 def convert_png2font(font_file):
 
     font = {}
