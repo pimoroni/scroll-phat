@@ -13,7 +13,7 @@ Thanks in no small part to the contributions of the buccaneers mentioned below w
 * `scroll-text-once.py` - Scrolls text once, by [roguem](https://github.com/roguem)
 * `scroll-text-quickstart.py` - Scrolls text without offset start
 * `scroll-text-rotated.py` - Scrolls text rotated 180degrees, by [stuphi](https://github.com/stuphi)
-* `scroll-text-in-my-font.py` - Scrolls text text using a custom font
+* `scroll-text-in-my-font.py` - Scrolls some text using a custom font in the my-font.png file
 * `sine.py` - Plot a sine wave
 * `test-all.py` - Test pattern for all LEDs/rows/columns
 * `turn-leds-off.py` - Turn off LEDs
