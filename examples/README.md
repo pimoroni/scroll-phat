@@ -1,4 +1,4 @@
-#Examples
+# Examples
 
 Thanks in no small part to the contributions of the buccaneers mentioned below we've amassed a library of examples to help  get you started with Scroll pHAT.
 
@@ -20,7 +20,7 @@ Thanks in no small part to the contributions of the buccaneers mentioned below w
 * `ukweather.py` - Display UK weather info, by [campag](https://github.com/campag)
 * `uptime.py` - Display system uptime, by [alexellis](https://github.com/alexellis)
 
-#Contributing
+# Contributing
 
 Your contributions are totally welcome, will let you show off your skills, and will go a long way toward helping the next person get started.
 
