@@ -4,9 +4,9 @@ try:
     import smbus
 except ImportError:
     if version_info[0] < 3:
-        exit("This library requires python-smbus\nInstall with: sudo apt-get install python-smbus")
+        raise ImportError("This library requires python-smbus\nInstall with: sudo apt-get install python-smbus")
     elif version_info[0] == 3:
-        exit("This library requires python3-smbus\nInstall with: sudo apt-get install python3-smbus")
+        raise ImportError("This library requires python3-smbus\nInstall with: sudo apt-get install python3-smbus")
 
 from .font import font
 from .IS31FL3730 import IS31FL3730, I2cConstants
@@ -17,7 +17,15 @@ __version__ = '0.0.7'
 ROTATE_OFF = False
 ROTATE_180 = True
 
-controller = IS31FL3730(smbus, font)
+controller = None
+
+def _get_controller():
+    global controller
+
+    if controller is None:
+        controller = IS31FL3730(smbus, font)
+
+    return controller
 
 def set_rotate(value):
     """Set the rotation of Scroll pHAT
@@ -25,31 +33,31 @@ def set_rotate(value):
     :param value: Rotate 180 degrees: True/False
     """
 
-    controller.set_rotate(value)
+    _get_controller().set_rotate(value)
 
 # The public interface maintains compatibility with previous singleton
 # pattern.
 def rotate5bits(x):
-    controller.rotate5bits(x)
+    _get_controller().rotate5bits(x)
 
 def update():
     """Update Scroll pHAT with the current buffer"""
 
-    controller.update()
+    _get_controller().update()
 
 def set_buffer(buf):
     """Overwrite the buffer
 
     :param buf: One dimensional array of int: 0 to 31 - pixels are 1,2,4,8,16 and 1 is top-most pixel
     """
-    controller.set_buffer(buf)
+    _get_controller().set_buffer(buf)
 
 def set_brightness(brightness):
     """Set the brightness of Scroll pHAT
     
     :param brightness: Brightness value: 0 to 255
     """
-    controller.set_brightness(brightness)
+    _get_controller().set_brightness(brightness)
 
 def set_col(x, value):
     """Set a single column in the buffer
@@ -57,7 +65,7 @@ def set_col(x, value):
     :param x: Position of column to set, buffer will auto-expand if necessary
     :param value: Value to set: 0 to 31 - pixels are 1,2,4,8,16 and 1 is top-most pixel
     """
-    controller.set_col(x, value)
+    _get_controller().set_col(x, value)
 
 def write_string( chars, x = 0):
     """Write a text string to the buffer
@@ -65,7 +73,7 @@ def write_string( chars, x = 0):
     :param chars: Text string to write
     :param x: Left offset in pixels
     """
-    controller.write_string(chars,x)
+    _get_controller().write_string(chars,x)
 
 def graph(values, low=None, high=None):
     """Write a bar graph to the buffer
@@ -74,11 +82,11 @@ def graph(values, low=None, high=None):
     :param low: Lowest possible value (default min(values))
     :param high: Highest possible value (default max(values))
     """
-    controller.graph(values, low, high)
+    _get_controller().graph(values, low, high)
 
 def buffer_len():
     """Returns the length of the internal buffer"""
-    return controller.buffer_len()
+    return _get_controller().buffer_len()
 
 def scroll(delta = 1):
     """Scroll the offset
@@ -88,15 +96,15 @@ def scroll(delta = 1):
 
     :param delta: Amount to scroll (default 1)
     """
-    controller.scroll(delta)
+    _get_controller().scroll(delta)
 
 def clear_buffer():
     """Clear just the buffer, do not update Scroll pHAT"""
-    controller.clear_buffer()
+    _get_controller().clear_buffer()
 
 def clear():
     """Clear the buffer, and then update Scroll pHAT"""
-    controller.clear()
+    _get_controller().clear()
 
 def load_font(new_font):
     """Replace the internal font array
@@ -114,18 +122,18 @@ def load_font(new_font):
 
     A value of 17 would light the top and bottom pixels.
     """
-    controller.load_font(new_font)
+    _get_controller().load_font(new_font)
 
 def scroll_to(pos = 0):
     """Set the internal offset to a specific position
 
     :param pos: Position to set
     """
-    controller.scroll_to(pos)
+    _get_controller().scroll_to(pos)
 
 def io_errors():
     """Return the internal count of IO Error events"""
-    return controller.io_errors()
+    return _get_controller().io_errors()
 
 def set_pixel(x,y,value):
     """Turn a specific pixel on or off
@@ -134,7 +142,7 @@ def set_pixel(x,y,value):
     :param y: The vertical position of the pixel: 0 to 4
     :param value: On/Off state: True/False
     """
-    controller.set_pixel(x,y,value)
+    _get_controller().set_pixel(x,y,value)
 
 def set_pixels(handler, auto_update=False):
     """Use a pixel shader function to set 11x5 pixels
@@ -151,5 +159,6 @@ def set_pixels(handler, auto_update=False):
     for x in range(11):
         for y in range(5):
             set_pixel(x, y, handler(x, y))
+
     if auto_update:
         update()
