@@ -24,6 +24,8 @@ $ ./build_docker_git.sh
 
 #### Running in a REPL
 
+> Note: i2c interfaces must be enabled on the Raspberry Pi host. See [raspi-config ](https://www.raspberrypi.org/documentation/configuration/raspi-config.md) for more info
+
 ```
 $ docker run -ti --privileged scroll-phat
 
