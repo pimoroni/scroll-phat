@@ -28,7 +28,7 @@ else:
     print("Defaulting to Sheffield-on-Sea")
     postcode = "S2" # Sheffield-on-Sea
 
-url = "http://open.live.bbc.co.uk/weather/feeds/en/" + postcode + "/3dayforecast.rss"
+url = "https://weather-broker-cdn.api.bbci.co.uk/en/forecast/rss/3day/" + postcode
 
 def get_timeout():
     return ticks_per_second * refresh_interval
