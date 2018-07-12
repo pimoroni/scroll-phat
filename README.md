@@ -69,6 +69,10 @@ sudo python3 setup.py install
 
 In all cases you will have to enable the i2c bus.
 
+## Alternative Libraries
+
+* PowerShell IoT Driver by @DanielSSilva - https://github.com/DanielSSilva/PowerShell-IoT---IS31FL3730-Driver
+
 ## Documentation & Support
 
 * Guides and tutorials - https://learn.pimoroni.com/scroll-phat
