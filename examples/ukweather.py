@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 from __future__ import print_function
-import subprocess
 import sys
 import time
 
@@ -17,8 +16,8 @@ scrollphat.set_brightness(4)
 
 # Every refresh_interval seconds we'll refresh the weather data, doesn't change too often so 30mins appropriate
 pause = 0.12
-ticks_per_second = 1/pause
-refresh_interval = 60*30
+ticks_per_second = 1 / pause
+refresh_interval = 60 * 30
 
 if len(sys.argv)==2:
     postcode = sys.argv[1]
@@ -39,8 +38,8 @@ def get_wet():
     d = feedparser.parse(url)
     entries = int(len(d['entries']))
     val = "        " + d['entries'][0]['title']
-    val +="        " + d['entries'][1]['title']
-    val +="        " + d['entries'][2]['title']
+    val += "        " + d['entries'][1]['title']
+    val += "        " + d['entries'][2]['title']
 # Tidy & shorten the message for the scroll display
     val = val.replace("Maximum", "Max")
     val = val.replace("Minimum", "Min")
