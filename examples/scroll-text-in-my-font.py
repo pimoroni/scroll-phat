@@ -4,7 +4,7 @@ import sys
 import time
 import scrollphat
 
-#-----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # This example uses a custome font set, read from
 # the image file my-font, which has the lower-case
 # letters replaced with symbols.
@@ -15,14 +15,14 @@ import scrollphat
 #   h - love heart 
 #   j - smiley face
 #   u,d,l,r - arrows (up down left and right respectively)
-#-------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 
 try:
     from PIL import Image
 except ImportError:
     exit("This script requires the pillow module\nInstall with: sudo pip install pillow")
 
-#-----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # This funtion will read the supplied image
 # and convert it into font data for Scoll pHAT.
 # The expect format of the image is as follows:
