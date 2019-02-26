@@ -70,4 +70,10 @@ def scroll_life(delay):
 
 
 if __name__ == "__main__":
+    print("""
+Scroll pHAT - Game Of Life
+
+Press Ctrl+C to exit!
+
+""")
     scroll_life(0.1)

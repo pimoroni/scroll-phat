@@ -6,10 +6,21 @@ import time
 import scrollphat
 
 
+print("""
+Scroll pHAT - Scroll Text Rotated
+
+Scroll text rotated 90 degrees.
+
+Press Ctrl+C to exit!
+""")
+
+
 scrollphat.set_brightness(2)
 
 if len(sys.argv) != 2:
-    print("\nusage: python simple-text-scroll-rotated.py \"message\" \npress CTRL-C to exit\n")
+    print("""
+Usage: python simple-text-scroll-rotated.py "message"
+""")
     sys.exit(0)
 
 scrollphat.set_rotate(True)

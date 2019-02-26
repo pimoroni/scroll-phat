@@ -29,7 +29,7 @@ while True:
         scrollphat.set_pixels(lambda x, y: y % 2 == 0, auto_update=True)
         time.sleep(0.5)
 
-        scrollphat.set_pixels(lambda x, y: x % 2 == 0, auto_update=True) 
+        scrollphat.set_pixels(lambda x, y: x % 2 == 0, auto_update=True)
         time.sleep(0.5)
 
         set_checker(0)

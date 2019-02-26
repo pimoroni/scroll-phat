@@ -3,12 +3,18 @@
 # simple binary clock
 # bcd for hours, minutes and seconds
 # chart for time past the hour (one light per whole ten minutes)
-# please see disclaimer at bottom of file
 
 import sys
 import time
 
 import scrollphat
+
+print("""
+Scroll pHAT - Binary Clock
+
+Press Ctrl+C to exit!
+
+""")
 
 
 def string_to_bcd(digit):

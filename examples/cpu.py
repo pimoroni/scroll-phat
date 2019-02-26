@@ -11,6 +11,13 @@ except ImportError:
 import scrollphat
 
 
+print("""
+Scroll pHAT - CPU Graph
+
+Press Ctrl+C to exit!
+
+""")
+
 i = 0
 scrollphat.set_brightness(20)
 

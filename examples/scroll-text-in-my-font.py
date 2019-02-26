@@ -12,7 +12,7 @@ import scrollphat
 #   a - tick
 #   b - cross
 #   f - flag
-#   h - love heart 
+#   h - love heart
 #   j - smiley face
 #   u,d,l,r - arrows (up down left and right respectively)
 # -------------------------------------------------------------------------------
@@ -21,6 +21,7 @@ try:
     from PIL import Image
 except ImportError:
     exit("This script requires the pillow module\nInstall with: sudo pip install pillow")
+
 
 # -----------------------------------------------------------------------------
 # This funtion will read the supplied image
@@ -46,8 +47,8 @@ def convert_png2font(font_file):
             for x in range(0, 5):
                 bits = 0
                 for y in range(0, 5):
-                     pixel=font_image.getpixel((border+(char_x * 6) + x , border+(char_y * 6) + y )) 
-                     if pixel == 1:
+                    pixel = font_image.getpixel((border + (char_x * 6) + x, border + (char_y * 6) + y))
+                    if pixel == 1:
                         bits |= (1 << y)
                 char_bits.append(bits)
 
@@ -59,21 +60,26 @@ def convert_png2font(font_file):
 
             char += 1
     return font
-#-----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 
 
-#-----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # Main program block
-#-----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 scrollphat.set_brightness(2)
 scrollphat.set_rotate(True)
 scrollphat.load_font(convert_png2font('my-font.png'))
 
 if len(sys.argv) != 2:
-    print("\nUsage: python scroll-text-in-my-font.py \"MESSAGE\" " )
-    print ("press CTRL-C to exit\n")
-    print("In this example the lettters are read from the \"my-font.png\" file,")
-    print("where lower-case letters are replaced with fun symbols and icons.")    
+    print("""
+Usage: python scroll-text-in-my-font.py "MESSAGE"
+
+Press CTRL-C to exit!
+
+In this example the lettters are read from the "my-font.png" file,
+where lower-case letters are replaced with fun symbols and icons.
+
+""")
     sys.exit(0)
 
 scrollphat.write_string(sys.argv[1], 11)

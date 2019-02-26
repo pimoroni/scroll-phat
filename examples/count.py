@@ -7,7 +7,15 @@ import scrollphat
 
 
 if(len(sys.argv) == 1):
-    print("Type a number in under 999 as an argument.")
+    print("""
+Scroll pHAT - Count
+
+Counts up to <number>
+
+Usage: {} <number>
+
+    Number should be under 999.
+""".format(sys.argv[0]))
     sys.exit(-1)
 val = int(sys.argv[1])
 
@@ -17,7 +25,16 @@ if(val > 999):
 
 scrollphat.set_brightness(7)
 
-for x in range(1, val+1):
+print("""
+Scroll pHAT - Count
+
+Counting up to {}
+
+Press Ctrl+C to exit!
+
+""".format(val))
+
+for x in range(1, val + 1):
     try:
         scrollphat.write_string(str(x))
         time.sleep(0.35)

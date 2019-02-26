@@ -52,6 +52,7 @@ DEFAULT_PAUSE_SHOW = 5
 
 DEFAULT_SCROLL_DISTANCE = 11
 
+
 class SpaceInvader(object):
     '''Class with functions to display the space-invader figure'''
 
@@ -182,13 +183,13 @@ class SpaceInvader(object):
             scrollphat.set_pixel(position, 2, 1)
 
         else:
-            print('armDownColumn input error: %s' % columnNumber)
+            print('armDownColumn input error: {}'.format(columnNumber))
 
     def armUpDisplay(self, position):
         '''Displays the space invader from parsed position with arms up'''
 
         if self.args.verbose:
-            print('Running SpaceInvader.armDownDisplay, position: %s' %  position)
+            print('Running SpaceInvader.armDownDisplay, position: {}'.format(position))
 
         if position > 6:
             print('Position too big to display setPositionCenter; MAX = 4')
@@ -209,7 +210,7 @@ class SpaceInvader(object):
 
         if self.args.verbose:
             print('Running SpaceInvader.dance')
-            print('Dancing for %s times' % self.args.dance_times)
+            print('Dancing for {} times'.format(self.args.dance_times))
 
         for i in range(0, self.args.dance_times):
 
@@ -230,7 +231,7 @@ class SpaceInvader(object):
 
         if self.args.verbose:
             print('Running SpaceInvader.pulse')
-            print('Pulsing for %s times' % self.args.pulse_times)
+            print('Pulsing for {} times'.format(self.args.pulse_times))
 
         for i in range(0, self.args.pulse_times):
             # Arm Down
@@ -287,7 +288,7 @@ class SpaceInvader(object):
         '''Sets the columns positions from scrolling in from stepNumber'''
 
         if self.args.verbose:
-            print('Running SpaceInvader.scrollInSteps, stepNumber: %s' % stepNumber)
+            print('Running SpaceInvader.scrollInSteps, stepNumber: {}'.format(stepNumber))
 
         # Arm Down
         if stepNumber == 1:
@@ -346,7 +347,7 @@ class SpaceInvader(object):
         '''Sets the columns positions from scrolling out from stepNumber'''
 
         if self.args.verbose:
-            print('Running SpaceInvader.scrollOutSteps, stepNumber: %s' %  stepNumber)
+            print('Running SpaceInvader.scrollOutSteps, stepNumber: {}'.format(stepNumber))
 
         # Arm Up
         if stepNumber == 1:
@@ -411,7 +412,6 @@ class SpaceInvader(object):
         if self.args.verbose:
             print('Running SpaceInvader.scrollIn')
 
-        #~ for i in range(1, 10):
         for i in range(1, DEFAULT_SCROLL_DISTANCE - 1):
             self.scrollOutSteps(i)
 
@@ -441,8 +441,6 @@ def __main__(args):
     '''
     print('\nStarting space-invaders...')
 
-    #~ import pdb; pdb.set_trace()
-
     # Create the Class-Object
     spaceInvader = SpaceInvader(args)
 
@@ -451,8 +449,8 @@ def __main__(args):
 
         try:
             if args.verbose:
-                print('seting brightness to: %d' % args.brightness)
-                print('Running %s' % args.function)
+                print('seting brightness to: {}'.format(args.brightness))
+                print('Running {}'.format(args.function))
 
             # Set brightness
             scrollphat.set_brightness(args.brightness)
@@ -503,11 +501,11 @@ def __main__(args):
                 scrollphat.clear()
 
             else:
-                print('Function unknown: %s' % args.function)
+                print('Function unknown: {}'.format(args.function))
                 args.function
 
         except KeyboardInterrupt:
-           scrollphat.clear()
+            scrollphat.clear()
 
     # Run script from parsed function
     runForFunctionName()
@@ -517,16 +515,15 @@ def __main__(args):
 
 parser = argparse.ArgumentParser(description='Display a Space-Invader character over your scroll-pHAT from Pimoroni.')
 parser.add_argument("-v", "--verbose", help="Increase output verbosity", action="store_true")
-
-parser.add_argument('-b', '--brightness', help="Set the brightness, default: %s" % DEFAULT_BRIGHTNESS, default=DEFAULT_BRIGHTNESS, type=int)
-parser.add_argument('-dt', '--dance_times', help="Set how many times to dance, default: %s" % DEFAULT_DANCE_TIMES, default=DEFAULT_DANCE_TIMES, type=int)
-parser.add_argument('-pt', '--pulse_times', help="Set how many times to pulse, default: %s" % DEFAULT_PULSE_TIMES, default=DEFAULT_PULSE_TIMES, type=int)
-parser.add_argument('-pd', '--pause-dance', help="Set the dance pause interval in seconds, default: %s" % DEFAULT_PAUSE_DANCE, default=DEFAULT_PAUSE_DANCE, type=float)
-parser.add_argument('-pp', '--pause-pulse', help="Set the pulse pause interval in seconds, default: %s" % DEFAULT_PAUSE_PULSE, default=DEFAULT_PAUSE_PULSE, type=float)
-parser.add_argument('-ps', '--pause-scroll', help="Set the scroll pause interval in seconds, default: %s" % DEFAULT_PAUSE_SCROLL, default=DEFAULT_PAUSE_SCROLL, type=float)
-parser.add_argument('-po', '--pause-show', help="Set the show pause interval in seconds, default: %s" % DEFAULT_PAUSE_SHOW, default=DEFAULT_PAUSE_SHOW, type=float)
+parser.add_argument('-b', '--brightness', help="Set the brightness, default: {}".format(DEFAULT_BRIGHTNESS), default=DEFAULT_BRIGHTNESS, type=int)
+parser.add_argument('-dt', '--dance_times', help="Set how many times to dance, default: {}".format(DEFAULT_DANCE_TIMES), default=DEFAULT_DANCE_TIMES, type=int)
+parser.add_argument('-pt', '--pulse_times', help="Set how many times to pulse, default: {}".format(DEFAULT_PULSE_TIMES), default=DEFAULT_PULSE_TIMES, type=int)
+parser.add_argument('-pd', '--pause-dance', help="Set the dance pause interval in seconds, default: {}".format(DEFAULT_PAUSE_DANCE), default=DEFAULT_PAUSE_DANCE, type=float)
+parser.add_argument('-pp', '--pause-pulse', help="Set the pulse pause interval in seconds, default: {}".format(DEFAULT_PAUSE_PULSE), default=DEFAULT_PAUSE_PULSE, type=float)
+parser.add_argument('-ps', '--pause-scroll', help="Set the scroll pause interval in seconds, default: {}".format(DEFAULT_PAUSE_SCROLL), default=DEFAULT_PAUSE_SCROLL, type=float)
+parser.add_argument('-po', '--pause-show', help="Set the show pause interval in seconds, default: {}".format(DEFAULT_PAUSE_SHOW), default=DEFAULT_PAUSE_SHOW, type=float)
 parser.add_argument('-f', '--function', help="Set the function to run ('dance', 'pulse', 'show-arms-down', 'show-arms-up', 'scroll-in', \
-'scroll-out', 'scroll', 'scroll-and-dance', 'scroll-and-pulse', 'clear'), default: %s" % DEFAULT_FUNCTION_NAME, default=DEFAULT_FUNCTION_NAME, type=str)
+'scroll-out', 'scroll', 'scroll-and-dance', 'scroll-and-pulse', 'clear'), default: {}".format(DEFAULT_FUNCTION_NAME), default=DEFAULT_FUNCTION_NAME, type=str)
 
 args = parser.parse_args()
 

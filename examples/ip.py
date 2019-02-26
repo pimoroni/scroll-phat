@@ -61,7 +61,7 @@ print(address_mode + " IP Address: " + str(ip))
 
 scrollphat.set_brightness(3)
 
-while True: 
+while True:
     try:
         scrollphat.clear()
         scrollphat.write_string("IP: " + str(ip) + "    ")

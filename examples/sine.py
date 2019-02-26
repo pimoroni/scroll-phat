@@ -7,6 +7,14 @@ import time
 import scrollphat
 
 
+print("""
+Scroll pHAT - Sine Wave
+
+Display a sine wave across the Scroll pHAT.
+
+Press Ctrl+C to exit!
+""")
+
 i = 0
 buf = [0] * 11
 scrollphat.set_brightness(20)

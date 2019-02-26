@@ -6,6 +6,14 @@ import time
 import scrollphat
 
 
+print("""
+Scroll pHAT - Progress
+
+Press Ctrl+C to exit!
+
+""")
+
+
 def millis():
     return int(round(time.time() * 1000))
 

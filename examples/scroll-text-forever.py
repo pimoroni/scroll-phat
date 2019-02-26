@@ -6,12 +6,20 @@ import time
 import scrollphat
 
 
-scrollphat.set_brightness(2)
+print("""
+Scroll pHAT - Scrolling Text
+
+Press Ctrl+C to exit!
+
+""")
 
 if len(sys.argv) != 2:
-    print("\nusage: python simple-text-scroll.py \"message\" \npress CTRL-C to exit\n")
+    print("""
+Usage: {} "message"
+""".format(sys.argv[0]))
     sys.exit(0)
 
+scrollphat.set_brightness(2)
 scrollphat.write_string(sys.argv[1], 11)
 
 while True:

@@ -5,6 +5,13 @@ import time
 import scrollphat
 
 
+print("""
+Scroll pHAT - Test Graph Autoscaling
+
+Press Ctrl+C to exit!
+""")
+
+
 scrollphat.set_brightness(64)
 
 while True:
