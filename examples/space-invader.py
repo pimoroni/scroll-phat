@@ -514,16 +514,52 @@ def __main__(args):
 
 
 parser = argparse.ArgumentParser(description='Display a Space-Invader character over your scroll-pHAT from Pimoroni.')
-parser.add_argument("-v", "--verbose", help="Increase output verbosity", action="store_true")
-parser.add_argument('-b', '--brightness', help="Set the brightness, default: {}".format(DEFAULT_BRIGHTNESS), default=DEFAULT_BRIGHTNESS, type=int)
-parser.add_argument('-dt', '--dance_times', help="Set how many times to dance, default: {}".format(DEFAULT_DANCE_TIMES), default=DEFAULT_DANCE_TIMES, type=int)
-parser.add_argument('-pt', '--pulse_times', help="Set how many times to pulse, default: {}".format(DEFAULT_PULSE_TIMES), default=DEFAULT_PULSE_TIMES, type=int)
-parser.add_argument('-pd', '--pause-dance', help="Set the dance pause interval in seconds, default: {}".format(DEFAULT_PAUSE_DANCE), default=DEFAULT_PAUSE_DANCE, type=float)
-parser.add_argument('-pp', '--pause-pulse', help="Set the pulse pause interval in seconds, default: {}".format(DEFAULT_PAUSE_PULSE), default=DEFAULT_PAUSE_PULSE, type=float)
-parser.add_argument('-ps', '--pause-scroll', help="Set the scroll pause interval in seconds, default: {}".format(DEFAULT_PAUSE_SCROLL), default=DEFAULT_PAUSE_SCROLL, type=float)
-parser.add_argument('-po', '--pause-show', help="Set the show pause interval in seconds, default: {}".format(DEFAULT_PAUSE_SHOW), default=DEFAULT_PAUSE_SHOW, type=float)
-parser.add_argument('-f', '--function', help="Set the function to run ('dance', 'pulse', 'show-arms-down', 'show-arms-up', 'scroll-in', \
-'scroll-out', 'scroll', 'scroll-and-dance', 'scroll-and-pulse', 'clear'), default: {}".format(DEFAULT_FUNCTION_NAME), default=DEFAULT_FUNCTION_NAME, type=str)
+
+parser.add_argument(
+    "-v", "--verbose",
+    help="Increase output verbosity",
+    action="store_true")
+
+parser.add_argument(
+    '-b', '--brightness',
+    help="Set the brightness, default: {}".format(DEFAULT_BRIGHTNESS),
+    default=DEFAULT_BRIGHTNESS, type=int)
+
+parser.add_argument(
+    '-dt', '--dance_times',
+    help="Set how many times to dance, default: {}".format(DEFAULT_DANCE_TIMES),
+    default=DEFAULT_DANCE_TIMES, type=int)
+
+parser.add_argument(
+    '-pt', '--pulse_times',
+    help="Set how many times to pulse, default: {}".format(DEFAULT_PULSE_TIMES),
+    default=DEFAULT_PULSE_TIMES, type=int)
+
+parser.add_argument(
+    '-pd', '--pause-dance',
+    help="Set the dance pause interval in seconds, default: {}".format(DEFAULT_PAUSE_DANCE),
+    default=DEFAULT_PAUSE_DANCE, type=float)
+
+parser.add_argument(
+    '-pp', '--pause-pulse',
+    help="Set the pulse pause interval in seconds, default: {}".format(DEFAULT_PAUSE_PULSE),
+    default=DEFAULT_PAUSE_PULSE, type=float)
+
+parser.add_argument(
+    '-ps', '--pause-scroll',
+    help="Set the scroll pause interval in seconds, default: {}".format(DEFAULT_PAUSE_SCROLL),
+    default=DEFAULT_PAUSE_SCROLL, type=float)
+
+parser.add_argument(
+    '-po', '--pause-show',
+    help="Set the show pause interval in seconds, default: {}".format(DEFAULT_PAUSE_SHOW),
+    default=DEFAULT_PAUSE_SHOW, type=float)
+
+parser.add_argument(
+    '-f', '--function',
+    help="Set the function to run ('dance', 'pulse', 'show-arms-down', 'show-arms-up', 'scroll-in', \
+'scroll-out', 'scroll', 'scroll-and-dance', 'scroll-and-pulse', 'clear'), default: {}".format(DEFAULT_FUNCTION_NAME),
+    default=DEFAULT_FUNCTION_NAME, type=str)
 
 args = parser.parse_args()
 
