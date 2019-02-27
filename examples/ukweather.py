@@ -1,14 +1,13 @@
 #!/usr/bin/env python
 
 from __future__ import print_function
-import subprocess
 import sys
 import time
 
 try:
     import feedparser
 except ImportError:
-    sys.exit("This script requires the feedparser module\nInstall with: sudo pip install feedparser") 
+    sys.exit("This script requires the feedparser module\nInstall with: sudo pip install feedparser")
 
 import scrollphat
 
@@ -17,39 +16,42 @@ scrollphat.set_brightness(4)
 
 # Every refresh_interval seconds we'll refresh the weather data, doesn't change too often so 30mins appropriate
 pause = 0.12
-ticks_per_second = 1/pause
-refresh_interval = 60*30
+ticks_per_second = 1 / pause
+refresh_interval = 60 * 30
 
-if len(sys.argv)==2:
+if len(sys.argv) == 2:
     postcode = sys.argv[1]
 else:
     print("Usage: ./ukweather.py area")
     print("eg ./ukweather.py SW19")
     print("Defaulting to Sheffield-on-Sea")
-    postcode = "S2" # Sheffield-on-Sea
+    postcode = "S2"  # Sheffield-on-Sea
 
 url = "https://weather-broker-cdn.api.bbci.co.uk/en/forecast/rss/3day/" + postcode
+
 
 def get_timeout():
     return ticks_per_second * refresh_interval
 
+
 def get_wet():
-# Get the weather data
+    # Get the weather data
     print("Updating weather for", postcode)
     d = feedparser.parse(url)
     entries = int(len(d['entries']))
     val = "        " + d['entries'][0]['title']
-    val +="        " + d['entries'][1]['title']
-    val +="        " + d['entries'][2]['title']
-# Tidy & shorten the message for the scroll display
+    val += "        " + d['entries'][1]['title']
+    val += "        " + d['entries'][2]['title']
+    # Tidy & shorten the message for the scroll display
     val = val.replace("Maximum", "Max")
     val = val.replace("Minimum", "Min")
     val = val.replace("Temperature: ", "")
-    val = val.replace(u"\u00B0","")
+    val = val.replace(u"\u00B0", "")
     val = val.replace(",", "")
     val = val.replace("(", "")
     val = val.replace(")", "")
     return val
+
 
 timeout = get_timeout()
 count = 0
@@ -67,8 +69,7 @@ while True:
             timeout = get_timeout()
             count = 0
         else:
-            count = count+ 1
+            count = count + 1
     except KeyboardInterrupt:
         scrollphat.clear()
         sys.exit(-1)
-

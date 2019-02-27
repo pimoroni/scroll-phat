@@ -34,6 +34,7 @@ def get_internal_ip():
     ip = [(s.connect(('8.8.8.8', 80)), s.getsockname()[0], s.close()) for s in [socket.socket(socket.AF_INET, socket.SOCK_DGRAM)]][0][1]
     return ip
 
+
 def get_public_ip():
     ip = "127.0.0.1"
     res = requests.get('http://ipinfo.io')
@@ -44,21 +45,23 @@ def get_public_ip():
         ip = json_data['ip']
     return ip
 
+
 def get_ip(mode):
     return get_public_ip() if mode == "public" else get_internal_ip()
 #    return mode == "public" ? get_public_ip() : get_internal_ip()
-    
+
+
 address_mode = "public"
 if(len(sys.argv) == 2):
     address_mode = sys.argv[1]
 
 ip = get_ip(address_mode)
 
-print(address_mode + " IP Address: " +str(ip))
+print(address_mode + " IP Address: " + str(ip))
 
 scrollphat.set_brightness(3)
 
-while True: 
+while True:
     try:
         scrollphat.clear()
         scrollphat.write_string("IP: " + str(ip) + "    ")

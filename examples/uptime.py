@@ -12,18 +12,21 @@ scrollphat.set_brightness(4)
 # Every refresh_interval seconds we'll refresh the uptime
 # Only has to change every 60 seconds.
 pause = 0.12
-ticks_per_second = 1/pause
+ticks_per_second = 1 / pause
 refresh_interval = 10
+
 
 def get_timeout():
     return ticks_per_second * refresh_interval
 
+
 def get_msg():
     val = subprocess.check_output(["uptime", "-p"]).decode("utf-8")
-    val = val.replace("\n","")
-    val = val.replace("minutes","mins")
+    val = val.replace("\n", "")
+    val = val.replace("minutes", "mins")
     val = val + "    "
     return val
+
 
 timeout = get_timeout()
 count = 0
@@ -40,10 +43,10 @@ while True:
             scrollphat.write_string(msg)
             timeout = get_timeout()
             count = 0
-            print ("Updating uptime message")
+            print("Updating uptime message")
         else:
-            count = count+ 1
+            count = count + 1
+
     except KeyboardInterrupt:
         scrollphat.clear()
         sys.exit(-1)
-
