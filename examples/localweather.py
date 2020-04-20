@@ -9,7 +9,6 @@ import json
 import time
 import urllib
 import logging
-from sys import exit
 
 try:
     from bs4 import BeautifulSoup
