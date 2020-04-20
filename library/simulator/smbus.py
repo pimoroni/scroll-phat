@@ -4,7 +4,6 @@ import tempfile
 from collections import namedtuple
 import pickle
 import os
-import time
 from scroll_phat_simulator import Cmds
 
 Command = namedtuple('Command', ['cmd', 'vals'])
