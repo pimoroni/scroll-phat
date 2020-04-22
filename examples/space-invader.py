@@ -37,7 +37,7 @@ import time
 try:
     import scrollphat
 except ImportError:
-    exit("This script requires the requests_pip module\nInstall with: sudo pip install scrollphat")
+    exit("This script requires the scrollphat module\nInstall with: sudo pip install scrollphat")
 
 __author__ = 'https://github.com/fejao'
 
