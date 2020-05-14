@@ -1,6 +1,5 @@
 import sys
 import subprocess
-import tempfile
 from collections import namedtuple
 import pickle
 import os
@@ -11,16 +10,13 @@ Command = namedtuple('Command', ['cmd', 'vals'])
 
 class SMBus:
     def __init__(self, dummy):
-        self.pipe = None
         self._start_simulator()
 
     def _start_simulator(self):
-        pipe_name = tempfile.NamedTemporaryFile().name
-        os.mkfifo(pipe_name)
-
         self.sdl_phat_process = subprocess.Popen(
-            [sys.executable, os.path.dirname(os.path.abspath(__file__)) + '/scroll_phat_simulator.py', pipe_name])
-        self.pipe = open(pipe_name, 'wb')
+            [sys.executable, os.path.dirname(os.path.abspath(
+                __file__)) + '/scroll_phat_simulator.py'],
+            stdin=subprocess.PIPE)
 
     def write_i2c_block_data(self, addr, cmd, vals):
         I2C_ADDR = 0x60
@@ -40,8 +36,9 @@ class SMBus:
             assert vals[-1] == 0xFF
 
         try:
-            pickle.dump(Command(cmd=parsed_cmd, vals=vals), self.pipe)
-            self.pipe.flush()
+            pickle.dump(Command(cmd=parsed_cmd, vals=vals),
+                        self.sdl_phat_process.stdin)
+            self.sdl_phat_process.stdin.flush()
         except OSError:
             print('lost connection with scroll pHAT simulator')
             sys.exit(-1)
