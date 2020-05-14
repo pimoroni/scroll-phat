@@ -1,10 +1,8 @@
 import threading
 import sys
-import errno
 import pickle
 import tkinter as tk
 from enum import Enum
-import time
 import signal
 
 ROWS = 5
