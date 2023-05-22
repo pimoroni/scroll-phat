@@ -11,7 +11,7 @@ pbr==1.10.0
 Pygments==2.7.4
 pyparsing==2.1.10
 pytz==2016.10
-requests==2.20.0
+requests==2.31.0
 six==1.10.0
 snowballstemmer==1.2.1
 Sphinx==1.5.3
